@@ -43,8 +43,13 @@ body{background:#0d0f14;color:#e8e4d8;font-family:'Rajdhani',sans-serif;width:10
 
 .phase-sep{height:2px;background:rgba(255,255,255,0.04);}
 
-.ext-list{display:flex;flex-direction:column;gap:6px;}
-.ext-empty{font-size:13px;color:#444;font-style:italic;padding:4px 0;}
+.ext-list{display:flex;flex-direction:column;gap:20px;}
+.ext-group-label{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#5a9fdf;margin-bottom:6px;padding-bottom:6px;border-bottom:1px solid rgba(90,159,223,0.15);}
+.ext-link{display:flex;align-items:center;gap:10px;padding:5px 10px;border-radius:3px;text-decoration:none;color:#b0a898;font-size:14px;font-weight:500;border:1px solid transparent;}
+.ext-link:hover{background:rgba(90,159,223,0.05);border-color:rgba(90,159,223,0.18);color:#d8d2c4;}
+.ext-link b{color:#d8d2c4;font-weight:700;}
+.ext-link:hover b{color:#f0ead8;}
+.ext-tag{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:1px 7px;border-radius:2px;background:rgba(90,159,223,0.1);color:#7ab8e8;border:1px solid rgba(90,159,223,0.22);white-space:nowrap;margin-left:auto;}
 
 .footer{padding:16px 36px;border-top:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;align-items:center;background:#0a0c10;margin-top:20px;}
 .footer-left{font-size:11px;color:#444;letter-spacing:2px;text-transform:uppercase;}
@@ -132,7 +137,35 @@ body{background:#0d0f14;color:#e8e4d8;font-family:'Rajdhani',sans-serif;width:10
 </div>
 <div class="section-content">
   <div class="ext-list">
-    <div class="ext-empty">No external links yet.</div>
+
+    <div>
+      <div class="ext-group-label">Generic</div>
+      <a class="ext-link" href="https://aoecompanion.com/b/34vh32dk9i1" target="_blank" rel="noopener">18 Vils <b>Men-at-Arms</b> into <b>Archers</b></a>
+      <a class="ext-link" href="https://aoecompanion.com/b/f2w6lofkegw" target="_blank" rel="noopener">18 Vils <b>Scouts</b> into <b>Archers</b></a>
+      <a class="ext-link" href="https://aoecompanion.com/b/trdd81qrhsh" target="_blank" rel="noopener">18 Vils <b>Scouts</b> into <b>Skirms</b></a>
+      <a class="ext-link" href="https://aoecompanion.com/b/y8lvh3r9hi" target="_blank" rel="noopener">19 Vils <b>Spears + Skirms</b><span class="ext-tag">Dean · Byzantines</span></a>
+      <a class="ext-link" href="https://aoecompanion.com/b/dmbs4u41q49" target="_blank" rel="noopener">19 Vils 1-Range <b>Archers</b><span class="ext-tag">Craig · Vikings</span></a>
+      <a class="ext-link" href="https://aoecompanion.com/b/0uzedmxo1p4" target="_blank" rel="noopener">20 Vils <b>Scouts</b> → Castle Age</a>
+      <a class="ext-link" href="https://aoecompanion.com/b/mtw05alqxve" target="_blank" rel="noopener">23+2 Vils <b>Fast Castle</b> → Boom</a>
+      <a class="ext-link" href="https://aoecompanion.com/b/v7hqyz4gd88" target="_blank" rel="noopener">25+2 Vils <b>Fast Castle</b> → Light Cav</a>
+      <a class="ext-link" href="https://aoecompanion.com/b/ln762smt4yl" target="_blank" rel="noopener">25+4 Vils <b>Knight Rush</b></a>
+    </div>
+
+    <div>
+      <div class="ext-group-label">Civ Specific</div>
+      <a class="ext-link" href="https://aoecompanion.com/b/bdomp7d1eh4" target="_blank" rel="noopener">18 Vils <b>Cuman 2 TC</b> Boom</a>
+      <a class="ext-link" href="https://aoecompanion.com/b/6qiacute8bq" target="_blank" rel="noopener">18 Vils <b>Cuman Chicken</b> 2 TC Boom</a>
+      <a class="ext-link" href="https://aoecompanion.com/b/ziwbw4aw0z" target="_blank" rel="noopener">19 Vils <b>Roman</b> Men-at-Arms Rush<span class="ext-tag">Dean · Romans</span></a>
+      <a class="ext-link" href="https://aoecompanion.com/b/7w8vhyqxfpg" target="_blank" rel="noopener">20 Vils <b>Chinese</b> Fast Feudal</a>
+    </div>
+
+    <div>
+      <div class="ext-group-label">Special</div>
+      <a class="ext-link" href="https://aoecompanion.com/b/88jyrbc2szj" target="_blank" rel="noopener">18 Vils Fast <b>Chickens</b> Dark Age</a>
+      <a class="ext-link" href="https://aoecompanion.com/b/k6jdlpqdyc" target="_blank" rel="noopener"><b>Smooth Castle</b> to Knights<span class="ext-tag">Steven · Franks, Sicilians</span></a>
+      <a class="ext-link" href="https://aoecompanion.com/b/ngxxcpr14er" target="_blank" rel="noopener">Survivalist 01: <b>Foundation</b></a>
+    </div>
+
   </div>
 </div>
 
