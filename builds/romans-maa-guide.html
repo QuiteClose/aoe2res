@@ -21,7 +21,12 @@ body{background:#0d0f14;color:#e8e4d8;font-family:'Rajdhani',sans-serif;width:10
 .build-name{font-size:19px;font-weight:700;color:#e8785a;letter-spacing:1px;}
 .build-sub{font-size:12px;color:#888;letter-spacing:1px;margin-top:2px;}
 
-.phase-header{display:flex;align-items:center;padding:0 36px;height:40px;position:relative;border-left:3px solid;}
+.bonus-bar{display:flex;gap:6px;padding:12px 36px;background:#0a0c10;border-bottom:1px solid rgba(255,255,255,0.05);flex-wrap:wrap;align-items:center;}
+.bonus-label{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#c5a028;min-width:60px;}
+.bonus-chip{font-size:12px;font-weight:600;color:#e8d090;padding:3px 10px;border-radius:3px;background:rgba(197,160,40,0.1);border:1px solid rgba(197,160,40,0.2);}
+.weakness-chip{font-size:12px;font-weight:600;color:#e89080;padding:3px 10px;border-radius:3px;background:rgba(232,144,128,0.08);border:1px solid rgba(232,144,128,0.2);}
+
+.phase-header{display:flex;align-items:center;padding:0 36px;height:40px;border-left:3px solid;}
 .phase-label{font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;}
 .phase-time{margin-left:auto;font-family:'Share Tech Mono',monospace;font-size:12px;opacity:.65;}
 .phase-content{padding:16px 36px 20px;}
@@ -37,6 +42,9 @@ body{background:#0d0f14;color:#e8e4d8;font-family:'Rajdhani',sans-serif;width:10
 .step-row{display:flex;align-items:flex-start;gap:10px;padding:7px 10px;border-radius:4px;border:1px solid rgba(255,255,255,0.04);background:rgba(255,255,255,0.02);}
 .step-row.key{border-color:rgba(197,160,40,0.35);background:rgba(197,160,40,0.06);}
 .step-row.key-red{border-color:rgba(232,120,90,0.35);background:rgba(232,120,90,0.06);}
+.step-row.key-blue{border-color:rgba(90,159,223,0.35);background:rgba(90,159,223,0.06);}
+.step-row.key-green{border-color:rgba(122,184,80,0.35);background:rgba(122,184,80,0.06);}
+.step-row.key-wood{border-color:rgba(192,120,64,0.45);background:rgba(192,120,64,0.07);}
 .step-pop{font-family:'Share Tech Mono',monospace;font-size:11px;color:#888;min-width:30px;padding-top:2px;letter-spacing:1px;}
 .step-icon{font-size:15px;min-width:20px;text-align:center;padding-top:1px;}
 .step-text{flex:1;font-size:14px;font-weight:500;color:#d8d2c4;line-height:1.4;}
@@ -44,9 +52,12 @@ body{background:#0d0f14;color:#e8e4d8;font-family:'Rajdhani',sans-serif;width:10
 .highlight{color:#c5a028;font-weight:700;}
 .roman-bonus{color:#e8785a;font-weight:700;}
 .green-t{color:#7ab850;font-weight:700;}
+.wood-t{color:#c07840;font-weight:700;}
 .step-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:2px 7px;border-radius:2px;white-space:nowrap;align-self:center;margin-left:auto;}
 .tag-roman{background:rgba(232,120,90,0.2);color:#e8785a;border:1px solid rgba(232,120,90,0.4);}
 .tag-key{background:rgba(197,160,40,0.2);color:#c5a028;border:1px solid rgba(197,160,40,0.4);}
+.tag-wood{background:rgba(192,120,64,0.2);color:#c07840;border:1px solid rgba(192,120,64,0.4);}
+.tag-warn{background:rgba(232,120,90,0.15);color:#e8785a;border:1px solid rgba(232,120,90,0.35);}
 
 .eco-bar{display:flex;gap:7px;padding:10px 14px;background:#0a0c10;border:1px solid rgba(255,255,255,0.08);border-radius:4px;margin-bottom:14px;align-items:center;flex-wrap:wrap;}
 .eco-label{font-size:11px;letter-spacing:2px;color:#666;text-transform:uppercase;font-weight:600;min-width:52px;}
@@ -62,6 +73,17 @@ body{background:#0d0f14;color:#e8e4d8;font-family:'Rajdhani',sans-serif;width:10
 .eco-pop .eco-dot{background:#a890d8;}
 
 .phase-sep{height:2px;background:rgba(255,255,255,0.04);}
+
+/* WOOD COST SUMMARY */
+.wood-summary{margin:0 0 14px;border:1px solid rgba(192,120,64,0.3);border-radius:6px;overflow:hidden;}
+.wood-summary-header{background:rgba(192,120,64,0.12);padding:8px 14px;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#c07840;border-bottom:1px solid rgba(192,120,64,0.2);}
+.wood-rows{display:flex;flex-direction:column;}
+.wood-row{display:flex;justify-content:space-between;align-items:center;padding:6px 14px;border-bottom:1px solid rgba(255,255,255,0.04);font-size:13px;}
+.wood-row:last-child{border-bottom:none;background:rgba(192,120,64,0.06);}
+.wood-row-label{color:#b0a898;}
+.wood-row-cost{font-family:'Share Tech Mono',monospace;color:#c07840;font-weight:700;}
+.wood-row-total{color:#e8c880;font-weight:700;}
+.wood-row-note{font-size:11px;color:#666;margin-left:8px;}
 
 .branch-box{margin:20px 36px;border:2px dashed rgba(232,120,90,0.5);border-radius:6px;padding:18px 20px;background:rgba(232,120,90,0.04);position:relative;}
 .branch-label{position:absolute;top:-10px;left:18px;background:#0d0f14;padding:0 8px;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#e8785a;}
@@ -98,6 +120,7 @@ body{background:#0d0f14;color:#e8e4d8;font-family:'Rajdhani',sans-serif;width:10
 .path-step-icon{min-width:16px;text-align:center;font-size:13px;}
 .path-step b{color:#d8d2c4;font-weight:700;}
 .roman-b{color:#e8785a;font-weight:700;}
+.wood-b{color:#c07840;font-weight:700;}
 
 .always-block{margin:16px 36px 0;border:1px solid rgba(122,184,80,0.3);border-radius:6px;padding:16px 20px;background:rgba(122,184,80,0.04);}
 .always-title{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#7ab850;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
@@ -143,6 +166,18 @@ body{background:#0d0f14;color:#e8e4d8;font-family:'Rajdhani',sans-serif;width:10
   </div>
 </div>
 
+<!-- BONUS BANNER -->
+<div class="bonus-bar">
+  <div class="bonus-label">Bonuses</div>
+  <div class="bonus-chip">🛡️ Infantry armor doubled</div>
+  <div class="bonus-chip">🏹 Scorpions −50% gold</div>
+  <div class="bonus-chip">⚡ Ballistas: scorps +33% attack speed</div>
+  <div class="bonus-chip">👷 Vils +5% gather/build/repair</div>
+  <div class="weakness-chip">✗ No Arson (missing)</div>
+  <div class="weakness-chip">✗ No Hussar / Paladin</div>
+  <div class="weakness-chip">✗ No Siege Onager</div>
+</div>
+
 <!-- DARK AGE -->
 <div class="phase-sep"></div>
 <div class="phase-header dark-phase">
@@ -173,7 +208,7 @@ body{background:#0d0f14;color:#e8e4d8;font-family:'Rajdhani',sans-serif;width:10
     </div>
     <div class="step-row key-red">
       <div class="step-pop">16</div><div class="step-icon">⚔️</div>
-      <div class="step-text">1 vil → build <b>Barracks + house</b> at front of map. This is your MAA factory.</div>
+      <div class="step-text">1 vil → build <b>Barracks + house</b> at front of map</div>
       <div class="step-tag tag-roman">Forward</div>
     </div>
     <div class="step-row">
@@ -223,7 +258,7 @@ body{background:#0d0f14;color:#e8e4d8;font-family:'Rajdhani',sans-serif;width:10
     </div>
     <div class="step-row key">
       <div class="step-pop">—</div><div class="step-icon">🛡️</div>
-      <div class="step-text"><b>Blacksmith → Scale Mail Armor</b> as soon as you have <b class="highlight">150F</b> — don't wait. <span class="roman-bonus">Roman bonus doubles it to +2/+2.</span> This keeps your MAA alive.</div>
+      <div class="step-text">Build <b>Blacksmith (150W)</b> → <b>Scale Mail Armor (100F)</b> as soon as you can afford both. <span class="roman-bonus">Roman bonus doubles it to +2/+2.</span> This keeps your MAA alive.</div>
       <div class="step-tag tag-roman">Romans ×2</div>
     </div>
     <div class="step-row">
@@ -233,6 +268,11 @@ body{background:#0d0f14;color:#e8e4d8;font-family:'Rajdhani',sans-serif;width:10
     <div class="step-row">
       <div class="step-pop">—</div><div class="step-icon">🌾</div>
       <div class="step-text">New TC vils → straggler trees → <b>seed farms</b> (target 5+)</div>
+    </div>
+    <div class="step-row key-wood">
+      <div class="step-pop">—</div><div class="step-icon">🌲</div>
+      <div class="step-text"><b class="wood-t">Don't cut wood vils</b> to ramp gold in late Feudal. Castle arrival spends <b class="wood-t">350W immediately</b> on buildings alone — you need that income.</div>
+      <div class="step-tag tag-wood">Wood sink</div>
     </div>
     <div class="step-row">
       <div class="step-pop">—</div><div class="step-icon">🏇</div>
@@ -291,16 +331,17 @@ body{background:#0d0f14;color:#e8e4d8;font-family:'Rajdhani',sans-serif;width:10
     </div>
     <div class="step-row">
       <div class="step-pop">—</div><div class="step-icon">🏪</div>
-      <div class="step-text">Build <b>Market + Blacksmith</b> (if not already). Market lets you buy food/wood if short.</div>
+      <div class="step-text">Build <b>Market (175W) + 2nd feudal building</b> to unlock Castle click</div>
     </div>
     <div class="step-row key">
       <div class="step-pop">—</div><div class="step-icon">⬆️</div>
-      <div class="step-text">3 wood vils → build <b>Market + 2nd feudal building</b> to unlock Castle click</div>
+      <div class="step-text">Click <b class="highlight">Castle Age</b></div>
       <div class="step-tag tag-key">Target 18–20 min</div>
     </div>
-    <div class="step-row">
+    <div class="step-row key-wood">
       <div class="step-pop">—</div><div class="step-icon">💰</div>
-      <div class="step-text"><b>Sell excess stone</b> at market if short on food or gold</div>
+      <div class="step-text">Check wood stockpile before Castle arrives. If below ~400W, <b class="wood-t">buy wood at market</b> or sell stone. Blacksmith + Siege Workshop + first scorpions = <b class="wood-t">425W minimum</b>.</div>
+      <div class="step-tag tag-wood">Pre-check</div>
     </div>
   </div>
 </div>
@@ -313,6 +354,20 @@ body{background:#0d0f14;color:#e8e4d8;font-family:'Rajdhani',sans-serif;width:10
   <div class="phase-time">~18–20 min</div>
 </div>
 
+<!-- WOOD COST SUMMARY -->
+<div style="padding: 16px 36px 0;">
+  <div class="wood-summary">
+    <div class="wood-summary-header">Wood costs on Castle arrival — Path A</div>
+    <div class="wood-rows">
+      <div class="wood-row"><span class="wood-row-label">Blacksmith (building)</span><span><span class="wood-row-cost">150W</span><span class="wood-row-note">needed for armor upgrades</span></span></div>
+      <div class="wood-row"><span class="wood-row-label">Siege Workshop (building)</span><span><span class="wood-row-cost">200W</span><span class="wood-row-note">required for scorpions + rams</span></span></div>
+      <div class="wood-row"><span class="wood-row-label">Scorpion (each, after Roman −50% gold)</span><span><span class="wood-row-cost">75W 38G</span><span class="wood-row-note">still full wood cost</span></span></div>
+      <div class="wood-row"><span class="wood-row-label">Ram (each)</span><span><span class="wood-row-cost">160W 75G</span><span class="wood-row-note">per ram</span></span></div>
+      <div class="wood-row"><span class="wood-row-label wood-row-total">Buildings alone (before any units)</span><span><span class="wood-row-cost" style="color:#e8c880;">350W</span></span></div>
+    </div>
+  </div>
+</div>
+
 <!-- CASTLE PATHS -->
 <div class="castle-paths">
   <div class="castle-path path-a">
@@ -322,12 +377,12 @@ body{background:#0d0f14;color:#e8e4d8;font-family:'Rajdhani',sans-serif;width:10
       <div class="path-tag">Use this most often</div>
     </div>
     <div class="path-content">
-      <div class="path-step"><div class="path-step-icon">🏭</div><div><b>Siege Workshop → scorpions.</b> <span class="roman-b">−50% gold</span> — mass them fast.</div></div>
-      <div class="path-step"><div class="path-step-icon">⚔️</div><div>Upgrade → <b>Long Swordsman.</b> Soak arrows for your scorps.</div></div>
-      <div class="path-step"><div class="path-step-icon">🪵</div><div><b>Rams</b> from siege workshop. Break buildings, protect scorps.</div></div>
-      <div class="path-step"><div class="path-step-icon">🛡️</div><div><b>Chain Mail Armor.</b> <span class="roman-b">Doubled</span> — LSwords become very tanky.</div></div>
+      <div class="path-step"><div class="path-step-icon">🏭</div><div>Build <b>Siege Workshop (200W)</b> → queue <b>scorpions (75W 38G each).</b> <span class="roman-b">−50% gold</span> — mass them fast.</div></div>
+      <div class="path-step"><div class="path-step-icon">⚔️</div><div>Upgrade militia → <b>Long Swordsman</b> at barracks. They soak arrows for your scorps.</div></div>
+      <div class="path-step"><div class="path-step-icon">🪵</div><div><b>Rams (160W each)</b> once you're pushing a base. Don't build them pre-emptively — expensive wood.</div></div>
+      <div class="path-step"><div class="path-step-icon">🛡️</div><div>Get <b>Chain Mail Armor (200F 100G)</b> at blacksmith. <span class="roman-b">Doubled</span> — LSwords become very tanky.</div></div>
       <div class="path-step"><div class="path-step-icon">🎯</div><div>Push: <b>Scorps behind · LSwords front · Rams on buildings</b></div></div>
-      <div class="path-step"><div class="path-step-icon">⚡</div><div><b class="roman-b">Ballistas</b> unique tech ASAP. Scorpions +33% attack speed.</div></div>
+      <div class="path-step"><div class="path-step-icon">⚡</div><div><b class="roman-b">Ballistas</b> unique tech ASAP. Scorpions +33% attack speed — biggest value spike.</div></div>
     </div>
   </div>
   <div class="castle-path path-b">
@@ -337,9 +392,9 @@ body{background:#0d0f14;color:#e8e4d8;font-family:'Rajdhani',sans-serif;width:10
       <div class="path-tag">If opponent is infantry-heavy</div>
     </div>
     <div class="path-content">
-      <div class="path-step"><div class="path-step-icon">🏇</div><div><b>Stable → Knights.</b> 2 knights beat most early Castle compositions.</div></div>
-      <div class="path-step"><div class="path-step-icon">🏭</div><div><b>Siege Workshop → Scorpions.</b> Knights front, scorps back.</div></div>
-      <div class="path-step"><div class="path-step-icon">❤️</div><div><b>Bloodlines</b> if food allows. Skip if tight.</div></div>
+      <div class="path-step"><div class="path-step-icon">🏇</div><div>Build <b>Stable (175W) → Knights (60F 75G).</b> 2 knights beat most early Castle compositions.</div></div>
+      <div class="path-step"><div class="path-step-icon">🏭</div><div>Build <b>Siege Workshop (200W) → Scorpions.</b> Knights front, scorps back.</div></div>
+      <div class="path-step"><div class="path-step-icon">❤️</div><div><b>Bloodlines (150F)</b> if food allows. Skip if tight.</div></div>
       <div class="path-step"><div class="path-step-icon">⚠️</div><div>Watch for pikes — if they appear, add LSwords or switch to Path A.</div></div>
       <div class="path-step"><div class="path-step-icon">🎯</div><div>Knights clean up what scorpions soften. Dodge mangonels with knights.</div></div>
       <div class="path-step"><div class="path-step-icon">⚡</div><div><b class="roman-b">Ballistas</b> unique tech ASAP. Scorpions +33% attack speed.</div></div>
@@ -347,20 +402,22 @@ body{background:#0d0f14;color:#e8e4d8;font-family:'Rajdhani',sans-serif;width:10
   </div>
 </div>
 
-<!-- ALWAYS DO THIS -->
+<!-- ALWAYS -->
 <div class="always-block">
   <div class="always-title">Both paths — always</div>
   <div class="always-grid">
+    <div class="always-item"><b>Keep wood income high</b> through Feudal — Castle arrival is wood-hungry</div>
     <div class="always-item"><b>Keep 1 TC producing vils</b> until ~100 pop</div>
     <div class="always-item"><b>Infantry armor first</b>, then attack upgrades</div>
-    <div class="always-item"><span style="color:#e8785a;font-weight:700;">Ballistas</span> unique tech ASAP — biggest spike</div>
-    <div class="always-item"><b>Don't float gold</b> — scorps are cheap, queue them</div>
-    <div class="always-item never-item"><b>No castle</b> — waste of stone on 1TC all-in</div>
+    <div class="always-item"><span style="color:#e8785a;font-weight:700;">Ballistas</span> unique tech ASAP — biggest Castle Age spike</div>
+    <div class="always-item"><b>Buy wood at market</b> if arriving Castle Age wood-short</div>
+    <div class="always-item"><b>Don't float gold</b> — scorps are cheap, keep queue full</div>
+    <div class="always-item never-item"><b>No castle building</b> — waste of stone on 1TC all-in</div>
     <div class="always-item never-item"><b>Don't reach Imperial</b> — opponent gunpowder threatens</div>
   </div>
 </div>
 
-<!-- RESOURCE TARGETS -->
+<!-- RES TABLE -->
 <div class="res-table">
   <div class="res-table-header">
     <div class="res-col-head">Resource</div>
@@ -374,17 +431,17 @@ body{background:#0d0f14;color:#e8e4d8;font-family:'Rajdhani',sans-serif;width:10
     <div class="res-cell"><span class="f">10–12 farms + TC</span></div>
     <div class="res-cell note">Always growing</div>
   </div>
-  <div class="res-row" style="background:rgba(192,120,64,0.04);">
+  <div class="res-row" style="background:rgba(192,120,64,0.07);">
     <div class="res-cell res-label"><span class="w">● Wood</span></div>
     <div class="res-cell"><span class="w">8–10</span></div>
-    <div class="res-cell"><span class="w">Steady income</span></div>
-    <div class="res-cell note">Rams + farms both cost wood</div>
+    <div class="res-cell"><span class="w">Keep income steady</span></div>
+    <div class="res-cell note">350W in buildings on Castle arrival</div>
   </div>
   <div class="res-row" style="background:rgba(197,160,40,0.04);">
     <div class="res-cell res-label"><span class="g">● Gold</span></div>
     <div class="res-cell"><span class="g">6–8</span></div>
     <div class="res-cell"><span class="g">Keep mines draining</span></div>
-    <div class="res-cell note">Scorps cheap — mass them</div>
+    <div class="res-cell note">Scorps cheap on gold — mass them</div>
   </div>
   <div class="res-row" style="background:rgba(144,144,184,0.04);">
     <div class="res-cell res-label"><span class="s">● Stone</span></div>
@@ -397,7 +454,7 @@ body{background:#0d0f14;color:#e8e4d8;font-family:'Rajdhani',sans-serif;width:10
 <!-- FOOTER -->
 <div class="footer">
   <div class="footer-left">Farraway · Romans · 1v1 Arabia</div>
-  <div class="footer-right">19 pop · MAA Rush → Castle All-In · v2026</div>
+  <div class="footer-right">19 pop · MAA Rush → Castle All-In · v3 2026</div>
 </div>
 
 </div>
