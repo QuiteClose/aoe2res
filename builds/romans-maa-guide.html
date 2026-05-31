@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Romans — 5 MAA Rush → Castle All-In</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0d0f14;color:#e8e4d8;font-family:'Rajdhani',sans-serif;width:100%;max-width:900px;margin:0 auto;padding-bottom:40px;}
+.guide{display:flex;flex-direction:column;width:100%;}
+
+.header{background:#111318;border-bottom:2px solid #c5a028;padding:22px 36px 18px;display:flex;align-items:center;justify-content:space-between;}
+.civ-icon{width:46px;height:46px;background:#c5a028;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:22px;color:#0d0f14;font-weight:700;font-family:'Share Tech Mono',monospace;letter-spacing:-2px;}
+.civ-badge{display:flex;align-items:center;gap:14px;}
+.civ-label{font-size:11px;color:#c5a028;letter-spacing:3px;text-transform:uppercase;font-weight:600;}
+.civ-name{font-size:26px;font-weight:700;color:#f0ead8;letter-spacing:1px;line-height:1;}
+.build-title{text-align:right;}
+.build-label{font-size:11px;color:#888;letter-spacing:3px;text-transform:uppercase;font-weight:600;margin-bottom:3px;}
+.build-name{font-size:19px;font-weight:700;color:#e8785a;letter-spacing:1px;}
+.build-sub{font-size:12px;color:#888;letter-spacing:1px;margin-top:2px;}
+
+.phase-header{display:flex;align-items:center;padding:0 36px;height:40px;position:relative;border-left:3px solid;}
+.phase-label{font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;}
+.phase-time{margin-left:auto;font-family:'Share Tech Mono',monospace;font-size:12px;opacity:.65;}
+.phase-content{padding:16px 36px 20px;}
+
+.dark-phase{border-color:#c5a028 !important;background:rgba(197,160,40,0.07);}
+.dark-phase .phase-label{color:#c5a028;}
+.feudal-phase{border-color:#7ab850 !important;background:rgba(122,184,80,0.07);}
+.feudal-phase .phase-label{color:#7ab850;}
+.castle-phase{border-color:#5a9fdf !important;background:rgba(90,159,223,0.07);}
+.castle-phase .phase-label{color:#5a9fdf;}
+
+.step-grid{display:flex;flex-direction:column;gap:5px;}
+.step-row{display:flex;align-items:flex-start;gap:10px;padding:7px 10px;border-radius:4px;border:1px solid rgba(255,255,255,0.04);background:rgba(255,255,255,0.02);}
+.step-row.key{border-color:rgba(197,160,40,0.35);background:rgba(197,160,40,0.06);}
+.step-row.key-red{border-color:rgba(232,120,90,0.35);background:rgba(232,120,90,0.06);}
+.step-pop{font-family:'Share Tech Mono',monospace;font-size:11px;color:#888;min-width:30px;padding-top:2px;letter-spacing:1px;}
+.step-icon{font-size:15px;min-width:20px;text-align:center;padding-top:1px;}
+.step-text{flex:1;font-size:14px;font-weight:500;color:#d8d2c4;line-height:1.4;}
+.step-text b{color:#f0ead8;font-weight:700;}
+.highlight{color:#c5a028;font-weight:700;}
+.roman-bonus{color:#e8785a;font-weight:700;}
+.green-t{color:#7ab850;font-weight:700;}
+.step-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:2px 7px;border-radius:2px;white-space:nowrap;align-self:center;margin-left:auto;}
+.tag-roman{background:rgba(232,120,90,0.2);color:#e8785a;border:1px solid rgba(232,120,90,0.4);}
+.tag-key{background:rgba(197,160,40,0.2);color:#c5a028;border:1px solid rgba(197,160,40,0.4);}
+
+.eco-bar{display:flex;gap:7px;padding:10px 14px;background:#0a0c10;border:1px solid rgba(255,255,255,0.08);border-radius:4px;margin-bottom:14px;align-items:center;flex-wrap:wrap;}
+.eco-label{font-size:11px;letter-spacing:2px;color:#666;text-transform:uppercase;font-weight:600;min-width:52px;}
+.eco-chip{display:flex;align-items:center;gap:5px;padding:3px 9px 3px 6px;border-radius:3px;font-family:'Share Tech Mono',monospace;font-size:12px;font-weight:700;}
+.eco-dot{width:6px;height:6px;border-radius:50%;}
+.eco-food{background:rgba(120,180,80,0.15);color:#8bc864;border:1px solid rgba(120,180,80,0.25);}
+.eco-wood{background:rgba(139,90,43,0.2);color:#c07840;border:1px solid rgba(139,90,43,0.3);}
+.eco-gold{background:rgba(197,160,40,0.15);color:#c5a028;border:1px solid rgba(197,160,40,0.25);}
+.eco-pop{background:rgba(150,120,200,0.15);color:#a890d8;border:1px solid rgba(150,120,200,0.25);}
+.eco-food .eco-dot{background:#8bc864;}
+.eco-wood .eco-dot{background:#c07840;}
+.eco-gold .eco-dot{background:#c5a028;}
+.eco-pop .eco-dot{background:#a890d8;}
+
+.phase-sep{height:2px;background:rgba(255,255,255,0.04);}
+
+.branch-box{margin:20px 36px;border:2px dashed rgba(232,120,90,0.5);border-radius:6px;padding:18px 20px;background:rgba(232,120,90,0.04);position:relative;}
+.branch-label{position:absolute;top:-10px;left:18px;background:#0d0f14;padding:0 8px;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#e8785a;}
+.branch-question{font-size:16px;font-weight:700;color:#f0ead8;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.08);}
+.branch-options{display:flex;gap:10px;}
+.branch-option{flex:1;border-radius:4px;padding:12px 14px;border:1px solid;}
+.branch-option.green{border-color:rgba(122,184,80,0.4);background:rgba(122,184,80,0.06);}
+.branch-option.red{border-color:rgba(232,120,90,0.4);background:rgba(232,120,90,0.06);}
+.branch-title{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+.branch-option.green .branch-title{color:#7ab850;}
+.branch-option.red .branch-title{color:#e8785a;}
+.branch-items{list-style:none;display:flex;flex-direction:column;gap:4px;}
+.branch-items li{font-size:13px;color:#b0a898;padding-left:12px;position:relative;line-height:1.35;}
+.branch-items li::before{content:'›';position:absolute;left:0;color:#666;}
+.branch-items li b{color:#d8d2c4;font-weight:700;}
+
+.castle-paths{display:flex;gap:12px;margin:16px 36px 0;}
+.castle-path{flex:1;border-radius:6px;overflow:hidden;}
+.path-header{padding:14px 18px 10px;border-bottom:1px solid rgba(255,255,255,0.06);}
+.path-num{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:3px;}
+.path-name{font-size:16px;font-weight:700;line-height:1.2;}
+.path-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:2px 7px;border-radius:2px;margin-top:5px;}
+.path-content{padding:14px 18px;}
+.path-a{background:rgba(232,120,90,0.04);border:1px solid rgba(232,120,90,0.15);}
+.path-a .path-num{color:#e8785a;}
+.path-a .path-name{color:#f0b498;}
+.path-a .path-tag{background:rgba(232,120,90,0.15);color:#e8785a;border:1px solid rgba(232,120,90,0.3);}
+.path-b{background:rgba(90,159,223,0.04);border:1px solid rgba(90,159,223,0.15);}
+.path-b .path-num{color:#5a9fdf;}
+.path-b .path-name{color:#90c0ef;}
+.path-b .path-tag{background:rgba(90,159,223,0.15);color:#5a9fdf;border:1px solid rgba(90,159,223,0.3);}
+.path-step{display:flex;align-items:flex-start;gap:9px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:13px;color:#b0a898;line-height:1.35;}
+.path-step:last-child{border-bottom:none;}
+.path-step-icon{min-width:16px;text-align:center;font-size:13px;}
+.path-step b{color:#d8d2c4;font-weight:700;}
+.roman-b{color:#e8785a;font-weight:700;}
+
+.always-block{margin:16px 36px 0;border:1px solid rgba(122,184,80,0.3);border-radius:6px;padding:16px 20px;background:rgba(122,184,80,0.04);}
+.always-title{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#7ab850;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.always-title::after{content:'';flex:1;height:1px;background:rgba(122,184,80,0.2);}
+.always-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px 20px;}
+.always-item{display:flex;align-items:flex-start;gap:7px;font-size:13px;color:#b0a898;line-height:1.35;padding:2px 0;}
+.always-item::before{content:'✓';color:#7ab850;font-weight:700;min-width:12px;}
+.always-item b{color:#d8d2c4;}
+.never-item::before{content:'✗';color:#e85a5a;}
+.never-item b{color:#e8a0a0;}
+
+.res-table{margin:16px 36px 0;border:1px solid rgba(255,255,255,0.07);border-radius:6px;overflow:hidden;}
+.res-table-header{display:grid;grid-template-columns:1fr 1fr 1.5fr 2fr;background:#111318;border-bottom:1px solid rgba(255,255,255,0.08);}
+.res-col-head{padding:8px 14px;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#666;}
+.res-row{display:grid;grid-template-columns:1fr 1fr 1.5fr 2fr;border-bottom:1px solid rgba(255,255,255,0.04);}
+.res-row:last-child{border-bottom:none;}
+.res-cell{padding:9px 14px;font-size:13px;color:#b0a898;font-family:'Share Tech Mono',monospace;}
+.res-cell.res-label{color:#888;font-family:'Rajdhani',sans-serif;font-weight:600;}
+.res-cell.note{font-family:'Rajdhani',sans-serif;font-size:12px;color:#666;}
+.f{color:#8bc864;}.w{color:#c07840;}.g{color:#c5a028;}.s{color:#9090b8;}
+
+.footer{padding:16px 36px;border-top:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;align-items:center;background:#0a0c10;margin-top:20px;}
+.footer-left{font-size:11px;color:#444;letter-spacing:2px;text-transform:uppercase;}
+.footer-right{font-size:11px;color:#444;font-family:'Share Tech Mono',monospace;}
+</style>
+</head>
+<body>
+<div class="guide">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="civ-badge">
+    <div class="civ-icon">R</div>
+    <div>
+      <div class="civ-label">Civilisation</div>
+      <div class="civ-name">Romans</div>
+    </div>
+  </div>
+  <div class="build-title">
+    <div class="build-label">Build Order</div>
+    <div class="build-name">5 MAA Rush → Castle All-In</div>
+    <div class="build-sub">19 pop · Arabia · 1v1</div>
+  </div>
+</div>
+
+<!-- DARK AGE -->
+<div class="phase-sep"></div>
+<div class="phase-header dark-phase">
+  <div class="phase-label">Dark Age</div>
+  <div class="phase-time">0:00 → ~9:15</div>
+</div>
+<div class="phase-content">
+  <div class="step-grid">
+    <div class="step-row">
+      <div class="step-pop">1–6</div><div class="step-icon">🐑</div>
+      <div class="step-text">All 6 starting vils → <b>sheep</b></div>
+    </div>
+    <div class="step-row">
+      <div class="step-pop">7–9</div><div class="step-icon">🌲</div>
+      <div class="step-text">3 vils → <b>wood</b> (build lumber camp)</div>
+    </div>
+    <div class="step-row">
+      <div class="step-pop">10</div><div class="step-icon">🐗</div>
+      <div class="step-text">1 vil → <b>lure boar #1</b> to TC</div>
+    </div>
+    <div class="step-row">
+      <div class="step-pop">11</div><div class="step-icon">🌿</div>
+      <div class="step-text">1 vil → <b>house</b> then <b>mill</b> → berries</div>
+    </div>
+    <div class="step-row">
+      <div class="step-pop">12–15</div><div class="step-icon">🫐</div>
+      <div class="step-text">4 vils → <b>berries</b></div>
+    </div>
+    <div class="step-row key-red">
+      <div class="step-pop">16</div><div class="step-icon">⚔️</div>
+      <div class="step-text">1 vil → build <b>Barracks + house</b> at front of map. This is your MAA factory.</div>
+      <div class="step-tag tag-roman">Forward</div>
+    </div>
+    <div class="step-row">
+      <div class="step-pop">17</div><div class="step-icon">🐗</div>
+      <div class="step-text">1 vil → <b>lure boar #2</b> to TC</div>
+    </div>
+    <div class="step-row">
+      <div class="step-pop">18–19</div><div class="step-icon">🌲</div>
+      <div class="step-text">2 vils → <b>wood</b></div>
+    </div>
+    <div class="step-row key">
+      <div class="step-pop">—</div><div class="step-icon">⬆️</div>
+      <div class="step-text">Research <b class="highlight">Loom</b> → <b class="highlight">click Feudal Age</b></div>
+      <div class="step-tag tag-key">Target 9:15</div>
+    </div>
+  </div>
+</div>
+
+<div class="phase-sep"></div>
+
+<!-- FEUDAL -->
+<div class="phase-header feudal-phase">
+  <div class="phase-label">Feudal Age — Core (always)</div>
+  <div class="phase-time">~9:15 → ~12:00</div>
+</div>
+<div class="phase-content">
+  <div class="eco-bar">
+    <div class="eco-label">Eco at Feudal</div>
+    <div class="eco-chip eco-food"><div class="eco-dot"></div>7F</div>
+    <div class="eco-chip eco-wood"><div class="eco-dot"></div>5W</div>
+    <div class="eco-chip eco-gold"><div class="eco-dot"></div>0G</div>
+    <div class="eco-chip eco-pop"><div class="eco-dot"></div>19 pop</div>
+  </div>
+  <div class="step-grid">
+    <div class="step-row">
+      <div class="step-pop">—</div><div class="step-icon">⛏️</div>
+      <div class="step-text">Move <b>2 vils</b> from food → <b>gold</b> mining camp</div>
+    </div>
+    <div class="step-row">
+      <div class="step-pop">—</div><div class="step-icon">🌲</div>
+      <div class="step-text">Move <b>2 vils</b> from food → <b>wood</b> — target: <span class="highlight">7W · 5F · 2G</span></div>
+    </div>
+    <div class="step-row key-red">
+      <div class="step-pop">—</div><div class="step-icon">⚔️</div>
+      <div class="step-text">Queue <b>5 Militia</b> → research <b class="roman-bonus">Man-at-Arms</b> during production. Send all forward on completion.</div>
+      <div class="step-tag tag-roman">Key move</div>
+    </div>
+    <div class="step-row key">
+      <div class="step-pop">—</div><div class="step-icon">🛡️</div>
+      <div class="step-text"><b>Blacksmith → Scale Mail Armor</b> as soon as you have <b class="highlight">150F</b> — don't wait. <span class="roman-bonus">Roman bonus doubles it to +2/+2.</span> This keeps your MAA alive.</div>
+      <div class="step-tag tag-roman">Romans ×2</div>
+    </div>
+    <div class="step-row">
+      <div class="step-pop">—</div><div class="step-icon">🌲</div>
+      <div class="step-text">Research <b class="green-t">Double-Bit Axe</b> at lumber camp</div>
+    </div>
+    <div class="step-row">
+      <div class="step-pop">—</div><div class="step-icon">🌾</div>
+      <div class="step-text">New TC vils → straggler trees → <b>seed farms</b> (target 5+)</div>
+    </div>
+    <div class="step-row">
+      <div class="step-pop">—</div><div class="step-icon">🏇</div>
+      <div class="step-text">Scout actively — watch their army, walling, buildings. Decide branch below.</div>
+    </div>
+  </div>
+</div>
+
+<div class="phase-sep"></div>
+
+<!-- BRANCH -->
+<div class="branch-box">
+  <div class="branch-label">Branch Decision — Feudal +2 min</div>
+  <div class="branch-question">Scout their base. MAA alive and dealing damage?</div>
+  <div class="branch-options">
+    <div class="branch-option green">
+      <div class="branch-title">🟢 Keep Feudal Pressure</div>
+      <ul class="branch-items">
+        <li>Walls incomplete, MAA killing vils</li>
+        <li>They're reacting defensively</li>
+        <li style="margin-top:4px;color:#7ab850;"><b>→ Add range (skirms) or 2nd barracks</b></li>
+        <li><b>→ Get Horse Collar</b> while farming</li>
+        <li><b>→ Delay their Castle Age</b></li>
+        <li><b>→ Pivot to Castle when satisfied</b></li>
+      </ul>
+    </div>
+    <div class="branch-option red">
+      <div class="branch-title">🔴 Abort → Fast Castle</div>
+      <ul class="branch-items">
+        <li>MAA bounced off walls or pikes</li>
+        <li>They're ahead or going FC themselves</li>
+        <li style="margin-top:4px;color:#e8785a;"><b>→ Pull MAA back immediately</b></li>
+        <li><b>→ Don't bleed gold</b> on a dead push</li>
+        <li><b>→ Execute Castle pivot below</b></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="phase-sep" style="margin-top:4px;"></div>
+
+<!-- PIVOT -->
+<div class="phase-header feudal-phase">
+  <div class="phase-label">Feudal → Castle Pivot</div>
+  <div class="phase-time">~11:00 → ~18:00</div>
+</div>
+<div class="phase-content">
+  <div class="step-grid">
+    <div class="step-row">
+      <div class="step-pop">—</div><div class="step-icon">⛏️</div>
+      <div class="step-text">Ramp to <b>6 vils on gold</b> total</div>
+    </div>
+    <div class="step-row">
+      <div class="step-pop">—</div><div class="step-icon">🌾</div>
+      <div class="step-text">Build farms to <b>10 total</b> — consistent food = faster Castle click</div>
+    </div>
+    <div class="step-row">
+      <div class="step-pop">—</div><div class="step-icon">🏪</div>
+      <div class="step-text">Build <b>Market + Blacksmith</b> (if not already). Market lets you buy food/wood if short.</div>
+    </div>
+    <div class="step-row key">
+      <div class="step-pop">—</div><div class="step-icon">⬆️</div>
+      <div class="step-text">3 wood vils → build <b>Market + 2nd feudal building</b> to unlock Castle click</div>
+      <div class="step-tag tag-key">Target 18–20 min</div>
+    </div>
+    <div class="step-row">
+      <div class="step-pop">—</div><div class="step-icon">💰</div>
+      <div class="step-text"><b>Sell excess stone</b> at market if short on food or gold</div>
+    </div>
+  </div>
+</div>
+
+<div class="phase-sep"></div>
+
+<!-- CASTLE HEADER -->
+<div class="phase-header castle-phase">
+  <div class="phase-label">Castle Age — Choose Your Path</div>
+  <div class="phase-time">~18–20 min</div>
+</div>
+
+<!-- CASTLE PATHS -->
+<div class="castle-paths">
+  <div class="castle-path path-a">
+    <div class="path-header">
+      <div class="path-num">Path A · Default Romans</div>
+      <div class="path-name">Scorpions + Rams + Longswords</div>
+      <div class="path-tag">Use this most often</div>
+    </div>
+    <div class="path-content">
+      <div class="path-step"><div class="path-step-icon">🏭</div><div><b>Siege Workshop → scorpions.</b> <span class="roman-b">−50% gold</span> — mass them fast.</div></div>
+      <div class="path-step"><div class="path-step-icon">⚔️</div><div>Upgrade → <b>Long Swordsman.</b> Soak arrows for your scorps.</div></div>
+      <div class="path-step"><div class="path-step-icon">🪵</div><div><b>Rams</b> from siege workshop. Break buildings, protect scorps.</div></div>
+      <div class="path-step"><div class="path-step-icon">🛡️</div><div><b>Chain Mail Armor.</b> <span class="roman-b">Doubled</span> — LSwords become very tanky.</div></div>
+      <div class="path-step"><div class="path-step-icon">🎯</div><div>Push: <b>Scorps behind · LSwords front · Rams on buildings</b></div></div>
+      <div class="path-step"><div class="path-step-icon">⚡</div><div><b class="roman-b">Ballistas</b> unique tech ASAP. Scorpions +33% attack speed.</div></div>
+    </div>
+  </div>
+  <div class="castle-path path-b">
+    <div class="path-header">
+      <div class="path-num">Path B · Gold Lead</div>
+      <div class="path-name">Knights + Scorpions</div>
+      <div class="path-tag">If opponent is infantry-heavy</div>
+    </div>
+    <div class="path-content">
+      <div class="path-step"><div class="path-step-icon">🏇</div><div><b>Stable → Knights.</b> 2 knights beat most early Castle compositions.</div></div>
+      <div class="path-step"><div class="path-step-icon">🏭</div><div><b>Siege Workshop → Scorpions.</b> Knights front, scorps back.</div></div>
+      <div class="path-step"><div class="path-step-icon">❤️</div><div><b>Bloodlines</b> if food allows. Skip if tight.</div></div>
+      <div class="path-step"><div class="path-step-icon">⚠️</div><div>Watch for pikes — if they appear, add LSwords or switch to Path A.</div></div>
+      <div class="path-step"><div class="path-step-icon">🎯</div><div>Knights clean up what scorpions soften. Dodge mangonels with knights.</div></div>
+      <div class="path-step"><div class="path-step-icon">⚡</div><div><b class="roman-b">Ballistas</b> unique tech ASAP. Scorpions +33% attack speed.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ALWAYS DO THIS -->
+<div class="always-block">
+  <div class="always-title">Both paths — always</div>
+  <div class="always-grid">
+    <div class="always-item"><b>Keep 1 TC producing vils</b> until ~100 pop</div>
+    <div class="always-item"><b>Infantry armor first</b>, then attack upgrades</div>
+    <div class="always-item"><span style="color:#e8785a;font-weight:700;">Ballistas</span> unique tech ASAP — biggest spike</div>
+    <div class="always-item"><b>Don't float gold</b> — scorps are cheap, queue them</div>
+    <div class="always-item never-item"><b>No castle</b> — waste of stone on 1TC all-in</div>
+    <div class="always-item never-item"><b>Don't reach Imperial</b> — opponent gunpowder threatens</div>
+  </div>
+</div>
+
+<!-- RESOURCE TARGETS -->
+<div class="res-table">
+  <div class="res-table-header">
+    <div class="res-col-head">Resource</div>
+    <div class="res-col-head">Vils</div>
+    <div class="res-col-head">Target</div>
+    <div class="res-col-head">Notes</div>
+  </div>
+  <div class="res-row" style="background:rgba(139,200,100,0.04);">
+    <div class="res-cell res-label"><span class="f">● Food</span></div>
+    <div class="res-cell"><span class="f">10–12</span></div>
+    <div class="res-cell"><span class="f">10–12 farms + TC</span></div>
+    <div class="res-cell note">Always growing</div>
+  </div>
+  <div class="res-row" style="background:rgba(192,120,64,0.04);">
+    <div class="res-cell res-label"><span class="w">● Wood</span></div>
+    <div class="res-cell"><span class="w">8–10</span></div>
+    <div class="res-cell"><span class="w">Steady income</span></div>
+    <div class="res-cell note">Rams + farms both cost wood</div>
+  </div>
+  <div class="res-row" style="background:rgba(197,160,40,0.04);">
+    <div class="res-cell res-label"><span class="g">● Gold</span></div>
+    <div class="res-cell"><span class="g">6–8</span></div>
+    <div class="res-cell"><span class="g">Keep mines draining</span></div>
+    <div class="res-cell note">Scorps cheap — mass them</div>
+  </div>
+  <div class="res-row" style="background:rgba(144,144,184,0.04);">
+    <div class="res-cell res-label"><span class="s">● Stone</span></div>
+    <div class="res-cell"><span class="s">0</span></div>
+    <div class="res-cell"><span class="s">Sell it all</span></div>
+    <div class="res-cell note">No castle on 1TC all-in</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-left">Farraway · Romans · 1v1 Arabia</div>
+  <div class="footer-right">19 pop · MAA Rush → Castle All-In · v2026</div>
+</div>
+
+</div>
+</body>
+</html>
