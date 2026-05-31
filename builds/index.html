@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build Orders — Index</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0d0f14;color:#e8e4d8;font-family:'Rajdhani',sans-serif;width:100%;max-width:900px;margin:0 auto;padding-bottom:40px;}
+.guide{display:flex;flex-direction:column;width:100%;}
+
+.header{background:#111318;border-bottom:2px solid #c5a028;padding:22px 36px 18px;display:flex;align-items:center;justify-content:space-between;}
+.civ-icon{width:46px;height:46px;background:#c5a028;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:20px;color:#0d0f14;font-weight:700;font-family:'Share Tech Mono',monospace;letter-spacing:-2px;}
+.civ-badge{display:flex;align-items:center;gap:14px;}
+.civ-label{font-size:11px;color:#c5a028;letter-spacing:3px;text-transform:uppercase;font-weight:600;}
+.civ-name{font-size:26px;font-weight:700;color:#f0ead8;letter-spacing:1px;line-height:1;}
+.build-title{text-align:right;}
+.build-label{font-size:11px;color:#888;letter-spacing:3px;text-transform:uppercase;font-weight:600;margin-bottom:3px;}
+.build-sub{font-size:12px;color:#888;letter-spacing:1px;margin-top:2px;}
+
+.section-header{display:flex;align-items:center;padding:0 36px;height:40px;border-left:3px solid #c5a028;background:rgba(197,160,40,0.07);}
+.section-label{font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#c5a028;}
+
+.section-content{padding:20px 36px;}
+
+.build-list{display:flex;flex-direction:column;gap:8px;}
+.build-link{display:flex;align-items:center;gap:16px;padding:14px 18px;border-radius:4px;border:1px solid rgba(255,255,255,0.07);background:rgba(255,255,255,0.02);text-decoration:none;color:inherit;transition:border-color 0.15s,background 0.15s;}
+.build-link:hover{border-color:rgba(197,160,40,0.4);background:rgba(197,160,40,0.05);}
+.build-link:hover .link-civ{color:#f0ead8;}
+.link-badge{width:36px;height:36px;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;font-family:'Share Tech Mono',monospace;flex-shrink:0;}
+.link-body{flex:1;}
+.link-civ{font-size:17px;font-weight:700;color:#d8d2c4;letter-spacing:0.5px;line-height:1;}
+.link-build{font-size:13px;font-weight:500;color:#888;margin-top:2px;}
+.link-arrow{font-family:'Share Tech Mono',monospace;font-size:14px;color:#444;margin-left:auto;}
+.build-link:hover .link-arrow{color:#c5a028;}
+
+.badge-franks{background:rgba(200,120,48,0.2);color:#e8a050;border:1px solid rgba(200,120,48,0.35);}
+.badge-romans{background:rgba(197,160,40,0.2);color:#c5a028;border:1px solid rgba(197,160,40,0.35);}
+.badge-sicilians{background:rgba(176,144,232,0.15);color:#b090e8;border:1px solid rgba(176,144,232,0.3);}
+.badge-vikings{background:rgba(90,184,232,0.15);color:#7ab8e8;border:1px solid rgba(90,184,232,0.3);}
+
+.phase-sep{height:2px;background:rgba(255,255,255,0.04);}
+
+.ext-list{display:flex;flex-direction:column;gap:6px;}
+.ext-empty{font-size:13px;color:#444;font-style:italic;padding:4px 0;}
+
+.footer{padding:16px 36px;border-top:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;align-items:center;background:#0a0c10;margin-top:20px;}
+.footer-left{font-size:11px;color:#444;letter-spacing:2px;text-transform:uppercase;}
+.footer-right{font-size:11px;color:#444;font-family:'Share Tech Mono',monospace;}
+</style>
+</head>
+<body>
+<div class="guide">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="civ-badge">
+    <div class="civ-icon">BO</div>
+    <div>
+      <div class="civ-label">Reference</div>
+      <div class="civ-name">Build Orders</div>
+    </div>
+  </div>
+  <div class="build-title">
+    <div class="build-label">Index</div>
+    <div class="build-sub">AoE II · 1v1 Arabia</div>
+  </div>
+</div>
+
+<div class="phase-sep"></div>
+
+<!-- BUILD LIST -->
+<div class="section-header">
+  <div class="section-label">Guides</div>
+</div>
+<div class="section-content">
+  <div class="build-list">
+
+    <a class="build-link" href="franks-scouts-fast-castle.html">
+      <div class="link-badge badge-franks">F</div>
+      <div class="link-body">
+        <div class="link-civ">Franks</div>
+        <div class="link-build">Scout Rush / FC → Knights · 18 pop</div>
+      </div>
+      <div class="link-arrow">→</div>
+    </a>
+
+    <a class="build-link" href="romans-maa-guide.html">
+      <div class="link-badge badge-romans">R</div>
+      <div class="link-body">
+        <div class="link-civ">Romans</div>
+        <div class="link-build">5 MAA Rush → Castle All-In</div>
+      </div>
+      <div class="link-arrow">→</div>
+    </a>
+
+    <a class="build-link" href="sicilians-knights-sargeant-donjons.html">
+      <div class="link-badge badge-sicilians">S</div>
+      <div class="link-body">
+        <div class="link-civ">Sicilians</div>
+        <div class="link-build">Fast Castle → Knights or Serjeants</div>
+      </div>
+      <div class="link-arrow">→</div>
+    </a>
+
+    <a class="build-link" href="vikings-archers-infrantry-guide.html">
+      <div class="link-badge badge-vikings">V</div>
+      <div class="link-body">
+        <div class="link-civ">Vikings</div>
+        <div class="link-build">Archer Rush → Berserks</div>
+      </div>
+      <div class="link-arrow">→</div>
+    </a>
+
+  </div>
+</div>
+
+<div class="phase-sep"></div>
+
+<!-- EXTERNAL LINKS -->
+<div class="section-header" style="border-color:#5a9fdf;background:rgba(90,159,223,0.05);">
+  <div class="section-label" style="color:#5a9fdf;">External Resources</div>
+</div>
+<div class="section-content">
+  <div class="ext-list">
+    <div class="ext-empty">No external links yet.</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-left">Farraway · AoE II</div>
+  <div class="footer-right">Build Order Index · v2026</div>
+</div>
+
+</div>
+</body>
+</html>
