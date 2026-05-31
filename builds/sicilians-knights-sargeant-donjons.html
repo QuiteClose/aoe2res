@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sicilians — FC Knights → Serjeants + Siege</title>
+<title>Sicilians — Beginner Guide</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <style>
@@ -11,26 +11,35 @@
 body{background:#0d0f14;color:#e8e4d8;font-family:'Rajdhani',sans-serif;width:100%;max-width:900px;margin:0 auto;padding-bottom:40px;}
 .guide{display:flex;flex-direction:column;width:100%;}
 
-.header{background:#111318;border-bottom:2px solid #8a6cc8;padding:22px 36px 18px;display:flex;align-items:center;justify-content:space-between;}
-.civ-icon{width:46px;height:46px;background:#8a6cc8;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:22px;color:#0d0f14;font-weight:700;font-family:'Share Tech Mono',monospace;letter-spacing:-2px;}
-.civ-badge{display:flex;align-items:center;gap:14px;}
-.civ-label{font-size:11px;color:#8a6cc8;letter-spacing:3px;text-transform:uppercase;font-weight:600;}
-.civ-name{font-size:26px;font-weight:700;color:#f0ead8;letter-spacing:1px;line-height:1;}
+/* HEADER */
+.header{background:#111318;border-bottom:3px solid #8a6cc8;padding:24px 36px 20px;display:flex;align-items:center;justify-content:space-between;}
+.civ-icon{width:52px;height:52px;background:#8a6cc8;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:26px;color:#0d0f14;font-weight:700;font-family:'Share Tech Mono',monospace;}
+.civ-badge{display:flex;align-items:center;gap:16px;}
+.civ-label{font-size:12px;color:#8a6cc8;letter-spacing:3px;text-transform:uppercase;font-weight:600;}
+.civ-name{font-size:28px;font-weight:700;color:#f0ead8;letter-spacing:1px;line-height:1;}
 .build-title{text-align:right;}
-.build-label{font-size:11px;color:#888;letter-spacing:3px;text-transform:uppercase;font-weight:600;margin-bottom:3px;}
-.build-name{font-size:19px;font-weight:700;color:#b090e8;letter-spacing:1px;}
-.build-sub{font-size:12px;color:#888;letter-spacing:1px;margin-top:2px;}
+.build-label{font-size:11px;color:#888;letter-spacing:3px;text-transform:uppercase;font-weight:600;margin-bottom:4px;}
+.build-name{font-size:18px;font-weight:700;color:#b090e8;letter-spacing:1px;}
+.build-sub{font-size:13px;color:#888;margin-top:3px;}
 
-.bonus-bar{display:flex;gap:6px;padding:12px 36px;background:#0a0c10;border-bottom:1px solid rgba(255,255,255,0.05);flex-wrap:wrap;align-items:center;}
-.bonus-label{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#8a6cc8;min-width:60px;}
-.bonus-chip{font-size:12px;font-weight:600;color:#c8b0e8;padding:3px 10px;border-radius:3px;background:rgba(138,108,200,0.12);border:1px solid rgba(138,108,200,0.25);}
-.weakness-chip{font-size:12px;font-weight:600;color:#e89080;padding:3px 10px;border-radius:3px;background:rgba(232,144,128,0.08);border:1px solid rgba(232,144,128,0.2);}
-.free-chip{font-size:12px;font-weight:600;color:#7ab850;padding:3px 10px;border-radius:3px;background:rgba(122,184,80,0.1);border:1px solid rgba(122,184,80,0.25);}
+/* ENCOURAGEMENT BANNER */
+.enc-banner{padding:14px 36px;background:rgba(138,108,200,0.1);border-bottom:1px solid rgba(138,108,200,0.2);display:flex;align-items:center;gap:12px;}
+.enc-icon{font-size:20px;}
+.enc-text{font-size:15px;color:#c8b0e8;font-weight:600;line-height:1.4;}
 
-.phase-header{display:flex;align-items:center;padding:0 36px;height:40px;border-left:3px solid;}
-.phase-label{font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;}
-.phase-time{margin-left:auto;font-family:'Share Tech Mono',monospace;font-size:12px;opacity:.65;}
-.phase-content{padding:16px 36px 20px;}
+/* BONUS REMINDER BAR */
+.bonus-bar{display:flex;flex-direction:column;gap:6px;padding:14px 36px;background:#0a0c10;border-bottom:1px solid rgba(255,255,255,0.05);}
+.bonus-bar-title{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#8a6cc8;margin-bottom:2px;}
+.bonus-chips{display:flex;gap:6px;flex-wrap:wrap;}
+.bonus-chip{font-size:13px;font-weight:600;color:#c8b0e8;padding:4px 12px;border-radius:4px;background:rgba(138,108,200,0.12);border:1px solid rgba(138,108,200,0.25);line-height:1.4;}
+.bonus-chip span{color:#e8e4d8;font-weight:700;}
+
+/* PHASE */
+.phase-sep{height:3px;background:rgba(255,255,255,0.04);}
+.phase-header{display:flex;align-items:center;padding:0 36px;height:44px;border-left:4px solid;}
+.phase-label{font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;}
+.phase-time{margin-left:auto;font-family:'Share Tech Mono',monospace;font-size:13px;opacity:.65;}
+.phase-content{padding:18px 36px 22px;}
 
 .dark-phase{border-color:#c5a028 !important;background:rgba(197,160,40,0.07);}
 .dark-phase .phase-label{color:#c5a028;}
@@ -39,120 +48,117 @@ body{background:#0d0f14;color:#e8e4d8;font-family:'Rajdhani',sans-serif;width:10
 .castle-phase{border-color:#8a6cc8 !important;background:rgba(138,108,200,0.07);}
 .castle-phase .phase-label{color:#b090e8;}
 
-.step-grid{display:flex;flex-direction:column;gap:5px;}
-.step-row{display:flex;align-items:flex-start;gap:10px;padding:7px 10px;border-radius:4px;border:1px solid rgba(255,255,255,0.04);background:rgba(255,255,255,0.02);}
-.step-row.key{border-color:rgba(197,160,40,0.35);background:rgba(197,160,40,0.06);}
-.step-row.key-sic{border-color:rgba(138,108,200,0.4);background:rgba(138,108,200,0.07);}
-.step-row.key-green{border-color:rgba(122,184,80,0.35);background:rgba(122,184,80,0.06);}
-.step-row.key-red{border-color:rgba(232,120,90,0.35);background:rgba(232,120,90,0.06);}
-.step-row.key-stone{border-color:rgba(144,144,184,0.4);background:rgba(144,144,184,0.06);}
-.step-row.key-wood{border-color:rgba(192,120,64,0.45);background:rgba(192,120,64,0.07);}
-.step-pop{font-family:'Share Tech Mono',monospace;font-size:11px;color:#888;min-width:30px;padding-top:2px;letter-spacing:1px;}
-.step-icon{font-size:15px;min-width:20px;text-align:center;padding-top:1px;}
-.step-text{flex:1;font-size:14px;font-weight:500;color:#d8d2c4;line-height:1.4;}
-.step-text b{color:#f0ead8;font-weight:700;}
-.highlight{color:#c5a028;font-weight:700;}
-.sic-bonus{color:#b090e8;font-weight:700;}
-.green-t{color:#7ab850;font-weight:700;}
-.stone-t{color:#9090c8;font-weight:700;}
-.wood-t{color:#c07840;font-weight:700;}
-.step-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:2px 7px;border-radius:2px;white-space:nowrap;align-self:center;margin-left:auto;}
+/* STEPS */
+.step-grid{display:flex;flex-direction:column;gap:7px;}
+
+.step-row{display:flex;align-items:flex-start;gap:12px;padding:10px 14px;border-radius:6px;border:1px solid rgba(255,255,255,0.05);background:rgba(255,255,255,0.02);}
+.step-row.key{border-color:rgba(197,160,40,0.4);background:rgba(197,160,40,0.07);}
+.step-row.key-sic{border-color:rgba(138,108,200,0.45);background:rgba(138,108,200,0.08);}
+.step-row.key-enc{border-color:rgba(122,184,80,0.4);background:rgba(122,184,80,0.07);}
+.step-row.key-stone{border-color:rgba(144,144,184,0.45);background:rgba(144,144,184,0.07);}
+.step-row.key-warn{border-color:rgba(232,120,90,0.35);background:rgba(232,120,90,0.06);}
+
+.step-pop{font-family:'Share Tech Mono',monospace;font-size:12px;color:#888;min-width:34px;padding-top:3px;letter-spacing:1px;}
+.step-icon{font-size:18px;min-width:24px;text-align:center;padding-top:2px;}
+.step-body{flex:1;display:flex;flex-direction:column;gap:4px;}
+.step-action{font-size:16px;font-weight:700;color:#f0ead8;line-height:1.35;}
+.step-why{font-size:13px;color:#9a96a0;line-height:1.4;font-weight:500;}
+.step-why b{color:#c8b8e0;}
+.step-bonus{font-size:13px;color:#b090e8;line-height:1.4;font-weight:600;}
+.step-enc{font-size:13px;color:#7ab850;line-height:1.4;font-weight:600;}
+
+.step-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:3px 8px;border-radius:3px;white-space:nowrap;align-self:flex-start;margin-top:2px;}
 .tag-sic{background:rgba(138,108,200,0.2);color:#b090e8;border:1px solid rgba(138,108,200,0.4);}
 .tag-key{background:rgba(197,160,40,0.2);color:#c5a028;border:1px solid rgba(197,160,40,0.4);}
-.tag-free{background:rgba(122,184,80,0.15);color:#7ab850;border:1px solid rgba(122,184,80,0.35);}
-.tag-stone{background:rgba(144,144,184,0.15);color:#9090c8;border:1px solid rgba(144,144,184,0.3);}
-.tag-warn{background:rgba(232,120,90,0.15);color:#e8785a;border:1px solid rgba(232,120,90,0.35);}
+.tag-do{background:rgba(122,184,80,0.15);color:#7ab850;border:1px solid rgba(122,184,80,0.35);}
+.tag-upgrade{background:rgba(90,159,223,0.15);color:#7ab8e8;border:1px solid rgba(90,159,223,0.35);}
 
-.eco-bar{display:flex;gap:7px;padding:10px 14px;background:#0a0c10;border:1px solid rgba(255,255,255,0.08);border-radius:4px;margin-bottom:14px;align-items:center;flex-wrap:wrap;}
-.eco-label{font-size:11px;letter-spacing:2px;color:#666;text-transform:uppercase;font-weight:600;min-width:52px;}
-.eco-chip{display:flex;align-items:center;gap:5px;padding:3px 9px 3px 6px;border-radius:3px;font-family:'Share Tech Mono',monospace;font-size:12px;font-weight:700;}
-.eco-dot{width:6px;height:6px;border-radius:50%;}
+/* ECO SNAPSHOT */
+.eco-bar{display:flex;gap:8px;padding:12px 16px;background:#0a0c10;border:1px solid rgba(255,255,255,0.08);border-radius:6px;margin-bottom:16px;align-items:center;flex-wrap:wrap;}
+.eco-label{font-size:12px;letter-spacing:2px;color:#666;text-transform:uppercase;font-weight:600;min-width:56px;}
+.eco-chip{display:flex;align-items:center;gap:6px;padding:4px 10px 4px 7px;border-radius:4px;font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;}
+.eco-dot{width:7px;height:7px;border-radius:50%;}
 .eco-food{background:rgba(120,180,80,0.15);color:#8bc864;border:1px solid rgba(120,180,80,0.25);}
 .eco-wood{background:rgba(139,90,43,0.2);color:#c07840;border:1px solid rgba(139,90,43,0.3);}
 .eco-gold{background:rgba(197,160,40,0.15);color:#c5a028;border:1px solid rgba(197,160,40,0.25);}
-.eco-stone{background:rgba(144,144,184,0.15);color:#9090c8;border:1px solid rgba(144,144,184,0.3);}
 .eco-pop{background:rgba(150,120,200,0.15);color:#a890d8;border:1px solid rgba(150,120,200,0.25);}
 .eco-food .eco-dot{background:#8bc864;}
 .eco-wood .eco-dot{background:#c07840;}
 .eco-gold .eco-dot{background:#c5a028;}
-.eco-stone .eco-dot{background:#9090c8;}
 .eco-pop .eco-dot{background:#a890d8;}
 
-.phase-sep{height:2px;background:rgba(255,255,255,0.04);}
+/* UPGRADE LIST */
+.upgrade-list{display:flex;flex-direction:column;gap:5px;margin:0 0 0;}
+.upgrade-item{display:flex;align-items:flex-start;gap:10px;padding:8px 12px;border-radius:5px;background:rgba(90,159,223,0.05);border:1px solid rgba(90,159,223,0.2);}
+.upgrade-order{font-family:'Share Tech Mono',monospace;font-size:11px;color:#5a9fdf;min-width:20px;font-weight:700;padding-top:2px;}
+.upgrade-body{flex:1;}
+.upgrade-name{font-size:15px;font-weight:700;color:#f0ead8;}
+.upgrade-cost{font-family:'Share Tech Mono',monospace;font-size:12px;color:#888;margin-left:8px;}
+.upgrade-effect{font-size:13px;color:#9a96a0;margin-top:2px;}
+.upgrade-effect b{color:#c8b8e0;}
+.upgrade-sic{font-size:13px;color:#b090e8;margin-top:2px;font-weight:600;}
 
-/* DONJON CALLOUT */
-.donjon-box{margin:0 0 14px;border:1px solid rgba(144,144,184,0.4);border-radius:6px;padding:12px 16px;background:rgba(144,144,184,0.06);position:relative;}
-.donjon-title{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#9090c8;margin-bottom:8px;}
-.donjon-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px 16px;}
-.donjon-item{font-size:13px;color:#b0a898;display:flex;align-items:flex-start;gap:7px;line-height:1.35;}
-.donjon-item::before{content:'›';color:#9090c8;min-width:10px;}
-.donjon-item b{color:#d8d2c4;}
+/* BRANCH */
+.branch-header{margin:0 36px 0;padding:14px 20px 12px;background:rgba(197,160,40,0.08);border:2px solid rgba(197,160,40,0.35);border-radius:6px 6px 0 0;}
+.branch-title{font-size:18px;font-weight:700;color:#f0e8c0;}
+.branch-subtitle{font-size:14px;color:#a8a090;margin-top:3px;}
+.branch-cols{display:flex;gap:0;margin:0 36px;}
+.branch-col{flex:1;padding:18px 20px;border:1px solid;}
+.branch-col-a{background:rgba(138,108,200,0.05);border-color:rgba(138,108,200,0.25);border-top:none;border-right:none;}
+.branch-col-b{background:rgba(122,184,80,0.04);border-color:rgba(122,184,80,0.2);border-top:none;}
+.branch-col-header{font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,0.07);}
+.branch-col-a .branch-col-header{color:#b090e8;}
+.branch-col-b .branch-col-header{color:#7ab850;}
+.branch-when{font-size:13px;color:#888;margin-bottom:10px;padding:6px 10px;border-radius:4px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);}
+.branch-when b{color:#c8c0b0;}
+.branch-steps{display:flex;flex-direction:column;gap:6px;}
+.branch-step{font-size:14px;color:#d8d2c4;padding-left:14px;position:relative;line-height:1.4;}
+.branch-step::before{content:'→';position:absolute;left:0;color:#666;}
+.branch-step b{color:#f0ead8;font-weight:700;}
+.branch-step .sic-b{color:#b090e8;font-weight:700;}
+.branch-step .green-b{color:#7ab850;font-weight:700;}
 
-/* REBALANCE TABLE */
-.rebalance-box{margin:0 0 14px;border:1px solid rgba(122,184,80,0.25);border-radius:6px;overflow:hidden;}
-.rebalance-header{background:rgba(122,184,80,0.08);padding:8px 14px;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#7ab850;border-bottom:1px solid rgba(122,184,80,0.15);}
-.rebalance-rows{display:grid;grid-template-columns:repeat(5,1fr);}
-.rebalance-cell{padding:8px 10px;text-align:center;border-right:1px solid rgba(255,255,255,0.04);}
-.rebalance-cell:last-child{border-right:none;}
-.rebalance-label{font-size:10px;color:#666;letter-spacing:2px;text-transform:uppercase;margin-bottom:3px;}
-.rebalance-val{font-family:'Share Tech Mono',monospace;font-size:14px;font-weight:700;}
-.rv-wood{color:#c07840;}
-.rv-gold{color:#c5a028;}
-.rv-farm{color:#8bc864;}
-.rv-berries{color:#7ab850;}
-.rv-total{color:#a890d8;}
+/* COUNTER SECTION */
+.counter-section{margin:0 36px;}
+.counter-header{background:rgba(232,120,90,0.08);border:1px solid rgba(232,120,90,0.3);border-radius:6px 6px 0 0;padding:14px 20px 12px;}
+.counter-title{font-size:18px;font-weight:700;color:#f0c0a8;}
+.counter-subtitle{font-size:14px;color:#a89890;margin-top:3px;}
+.counter-rows{border:1px solid rgba(255,255,255,0.06);border-top:none;border-radius:0 0 6px 6px;overflow:hidden;}
+.counter-row{display:grid;grid-template-columns:200px 1fr;border-bottom:1px solid rgba(255,255,255,0.05);}
+.counter-row:last-child{border-bottom:none;}
+.counter-row:nth-child(even){background:rgba(255,255,255,0.01);}
+.counter-threat{padding:12px 16px;border-right:1px solid rgba(255,255,255,0.05);}
+.counter-threat-label{font-size:11px;color:#888;letter-spacing:2px;text-transform:uppercase;margin-bottom:3px;}
+.counter-threat-name{font-size:15px;font-weight:700;color:#f0c0a8;}
+.counter-answer{padding:12px 16px;}
+.counter-build{font-size:15px;font-weight:700;color:#f0ead8;margin-bottom:4px;}
+.counter-why{font-size:13px;color:#9a96a0;line-height:1.4;}
+.counter-why b{color:#c8b8e0;}
+.counter-bonus{font-size:13px;color:#b090e8;font-weight:600;margin-top:3px;}
 
-.castle-shared{border:1px solid rgba(138,108,200,0.25);border-radius:6px;padding:14px 18px;background:rgba(138,108,200,0.04);margin-bottom:14px;}
-.castle-shared-title{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#b090e8;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
-.castle-shared-title::after{content:'';flex:1;height:1px;background:rgba(138,108,200,0.2);}
+/* PANIC BOX */
+.panic-box{margin:0 36px;border:2px solid rgba(138,108,200,0.4);border-top:none;border-radius:0 0 6px 6px;}
+.panic-header{background:rgba(138,108,200,0.12);padding:12px 16px 10px;border-bottom:1px solid rgba(138,108,200,0.2);}
+.panic-title{font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#b090e8;}
+.panic-content{padding:14px 16px;}
+.panic-text{font-size:15px;color:#d8d2c4;line-height:1.5;}
+.panic-text b{color:#f0ead8;font-weight:700;}
+.panic-text .sic-b{color:#b090e8;font-weight:700;}
 
-.castle-paths{display:flex;gap:12px;margin-bottom:14px;}
-.castle-path{flex:1;border-radius:6px;overflow:hidden;}
-.path-header{padding:14px 18px 10px;border-bottom:1px solid rgba(255,255,255,0.06);}
-.path-num{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:3px;}
-.path-name{font-size:15px;font-weight:700;line-height:1.2;}
-.path-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:2px 7px;border-radius:2px;margin-top:5px;}
-.path-content{padding:14px 18px;}
-.path-a{background:rgba(197,120,48,0.04);border:1px solid rgba(197,120,48,0.18);}
-.path-a .path-num{color:#e8a050;}
-.path-a .path-name{color:#f0c090;}
-.path-a .path-tag{background:rgba(197,120,48,0.15);color:#e8a050;border:1px solid rgba(197,120,48,0.35);}
-.path-b{background:rgba(138,108,200,0.04);border:1px solid rgba(138,108,200,0.18);}
-.path-b .path-num{color:#b090e8;}
-.path-b .path-name{color:#c8b0f0;}
-.path-b .path-tag{background:rgba(138,108,200,0.15);color:#b090e8;border:1px solid rgba(138,108,200,0.35);}
-.path-step{display:flex;align-items:flex-start;gap:9px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:13px;color:#b0a898;line-height:1.35;}
-.path-step:last-child{border-bottom:none;}
-.path-step-icon{min-width:16px;text-align:center;font-size:13px;}
-.path-step b{color:#d8d2c4;font-weight:700;}
-.sic-b{color:#b090e8;font-weight:700;}
-.warn-b{color:#e8785a;font-weight:700;}
+/* FIRST CRUSADE */
+.crusade-box{margin:16px 36px 0;border:2px solid rgba(197,160,40,0.4);border-radius:6px;padding:18px 20px;}
+.crusade-title{font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#c5a028;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.crusade-title::after{content:'';flex:1;height:1px;background:rgba(197,160,40,0.2);}
+.crusade-body{font-size:15px;color:#d8d2c4;line-height:1.6;}
+.crusade-body b{color:#f0e8c0;font-weight:700;}
+.crusade-body .sic-b{color:#b090e8;font-weight:700;}
 
-.always-block{margin:16px 36px 0;border:1px solid rgba(138,108,200,0.3);border-radius:6px;padding:16px 20px;background:rgba(138,108,200,0.04);}
-.always-title{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#b090e8;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
-.always-title::after{content:'';flex:1;height:1px;background:rgba(138,108,200,0.2);}
-.always-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px 20px;}
-.always-item{display:flex;align-items:flex-start;gap:7px;font-size:13px;color:#b0a898;line-height:1.35;padding:2px 0;}
-.always-item::before{content:'✓';color:#b090e8;font-weight:700;min-width:12px;}
-.always-item b{color:#d8d2c4;}
-.never-item::before{content:'✗';color:#e85a5a;}
-.never-item b{color:#e8a0a0;}
-
-.res-table{margin:16px 36px 0;border:1px solid rgba(255,255,255,0.07);border-radius:6px;overflow:hidden;}
-.res-table-header{display:grid;grid-template-columns:1fr 1fr 1.5fr 2fr;background:#111318;border-bottom:1px solid rgba(255,255,255,0.08);}
-.res-col-head{padding:8px 14px;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#666;}
-.res-row{display:grid;grid-template-columns:1fr 1fr 1.5fr 2fr;border-bottom:1px solid rgba(255,255,255,0.04);}
-.res-row:last-child{border-bottom:none;}
-.res-cell{padding:9px 14px;font-size:13px;color:#b0a898;font-family:'Share Tech Mono',monospace;}
-.res-cell.res-label{color:#888;font-family:'Rajdhani',sans-serif;font-weight:600;}
-.res-cell.note{font-family:'Rajdhani',sans-serif;font-size:12px;color:#666;}
-.f{color:#8bc864;}.w{color:#c07840;}.g{color:#c5a028;}.s{color:#9090b8;}
-
+/* FOOTER */
 .footer{padding:16px 36px;border-top:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;align-items:center;background:#0a0c10;margin-top:20px;}
 .footer-left{font-size:11px;color:#444;letter-spacing:2px;text-transform:uppercase;}
 .footer-right{font-size:11px;color:#444;font-family:'Share Tech Mono',monospace;}
 
-.source-note{margin:0 36px;padding:8px 14px;background:#0a0c10;border:1px solid rgba(255,255,255,0.05);border-radius:4px;font-size:11px;color:#555;font-family:'Share Tech Mono',monospace;}
+.section-gap{height:20px;}
 </style>
 </head>
 <body>
@@ -168,89 +174,132 @@ body{background:#0d0f14;color:#e8e4d8;font-family:'Rajdhani',sans-serif;width:10
     </div>
   </div>
   <div class="build-title">
-    <div class="build-label">Build Order</div>
-    <div class="build-name">FC Knights → Serjeants + Siege</div>
-    <div class="build-sub">Arabia · 1v1 · Survivalist Fundamentals</div>
+    <div class="build-label">Your Build</div>
+    <div class="build-name">Fast Castle → Knights or Serjeants</div>
+    <div class="build-sub">Survivalist Fundamentals · Arabia</div>
   </div>
 </div>
 
-<!-- BONUS BANNER -->
-<div class="bonus-bar">
-  <div class="bonus-label">Bonuses</div>
-  <div class="bonus-chip">🪨 Start with +100 stone</div>
-  <div class="bonus-chip">🌾 Farm upgrades +125% food</div>
-  <div class="bonus-chip">🛡️ Soldiers −40% bonus damage</div>
-  <div class="bonus-chip">🏰 Donjon in Dark Age</div>
-  <div class="bonus-chip">⚡ Fortifications +50% faster</div>
-  <div class="bonus-chip">⚔️ Hauberk: Knights +1M/+2P armor</div>
-  <div class="weakness-chip">✗ No Paladin / Hussar</div>
-  <div class="weakness-chip">✗ No Siege Onager / Siege Ram</div>
+<!-- ENCOURAGEMENT -->
+<div class="enc-banner">
+  <div class="enc-icon">🛡️</div>
+  <div class="enc-text">The Sicilians are one of the toughest civilisations in the game. Your units take less damage than normal. You have a special tower called the Donjon. You have powerful unique soldiers called Serjeants. This guide will tell you exactly what to do and when.</div>
 </div>
 
-<!-- SOURCE NOTE -->
-<div style="padding:8px 36px 0;">
-  <div class="source-note">Build order: Survivalist Fundamentals · Sicilian adaptations: Donjon placement, Castle Age army</div>
+<!-- BONUSES -->
+<div class="bonus-bar">
+  <div class="bonus-bar-title">Your special bonuses — remember these</div>
+  <div class="bonus-chips">
+    <div class="bonus-chip">🪨 You start with <span>+100 stone</span> already</div>
+    <div class="bonus-chip">🏰 You can build a <span>Donjon</span> right away — it's a powerful tower</div>
+    <div class="bonus-chip">🛡️ Your soldiers take <span>40% less bonus damage</span> — they are tougher than they look</div>
+    <div class="bonus-chip">🌾 Your farms give <span>much more food</span> than other civs</div>
+    <div class="bonus-chip">⚡ Your walls and towers build <span>50% faster</span></div>
+    <div class="bonus-chip">⚔️ <span>Hauberk</span> — makes your knights much harder to kill (research in Castle Age)</div>
+    <div class="bonus-chip">👑 <span>First Crusade</span> — spawns free Serjeants at every Town Center (save for Imperial Age)</div>
+  </div>
 </div>
 
 <!-- DARK AGE -->
-<div class="phase-sep" style="margin-top:8px;"></div>
+<div class="phase-sep"></div>
 <div class="phase-header dark-phase">
   <div class="phase-label">Dark Age</div>
   <div class="phase-time">0:00 → ~10:30</div>
 </div>
 <div class="phase-content">
   <div class="step-grid">
-    <div class="step-row key-sic">
-      <div class="step-pop">Start</div><div class="step-icon">🪨</div>
-      <div class="step-text"><span class="sic-bonus">+100 stone banked</span> at game start. Donjon costs 125S — you need only <span class="stone-t">25 more stone</span> from mining. Plan vil 21 accordingly.</div>
-      <div class="step-tag tag-sic">Sicilians</div>
-    </div>
+
     <div class="step-row">
-      <div class="step-pop">1–3</div><div class="step-icon">🐑</div>
-      <div class="step-text">Queue 3 vils, build <b>2 houses</b> → send to <b>sheep</b></div>
+      <div class="step-pop">1–3</div><div class="step-icon">🏠</div>
+      <div class="step-body">
+        <div class="step-action">Queue 3 villagers. Build 2 houses.</div>
+        <div class="step-why">You always need houses. Without them your Town Center stops making villagers.</div>
+      </div>
     </div>
+
     <div class="step-row">
-      <div class="step-pop">4–6</div><div class="step-icon">🐑</div>
-      <div class="step-text">3 vils → <b>sheep</b></div>
+      <div class="step-pop">1–6</div><div class="step-icon">🐑</div>
+      <div class="step-body">
+        <div class="step-action">Send villagers 1 to 6 to sheep.</div>
+        <div class="step-why">Sheep give you food quickly at the start.</div>
+      </div>
     </div>
+
     <div class="step-row">
       <div class="step-pop">7–10</div><div class="step-icon">🌲</div>
-      <div class="step-text">4 vils → <b>lumber camp + wood</b>. Take 1 vil from wood → build <b>2 houses</b> → back to wood.</div>
+      <div class="step-body">
+        <div class="step-action">Send villagers 7 to 10 to build a Lumber Camp, then chop wood.</div>
+        <div class="step-why">Wood pays for farms and buildings later.</div>
+        <div class="step-action" style="margin-top:4px;">Take 1 villager from wood. Build 2 more houses. Send him back to wood.</div>
+        <div class="step-why">Keep ahead of your population cap so your Town Center never stops.</div>
+      </div>
     </div>
+
     <div class="step-row">
       <div class="step-pop">11</div><div class="step-icon">🐗</div>
-      <div class="step-text">1 vil → <b>lure boar #1</b> to TC</div>
+      <div class="step-body">
+        <div class="step-action">Send one villager to lure the first boar to your Town Center.</div>
+        <div class="step-why">Boar gives a lot of food fast. Click the boar once with your villager, then run back to your Town Center.</div>
+      </div>
     </div>
+
     <div class="step-row">
       <div class="step-pop">12–14</div><div class="step-icon">🐑</div>
-      <div class="step-text">3 vils → <b>sheep / boar</b> under TC</div>
+      <div class="step-body">
+        <div class="step-action">Send villagers 12 to 14 to eat the sheep and boar near your Town Center.</div>
+      </div>
     </div>
+
     <div class="step-row">
       <div class="step-pop">15</div><div class="step-icon">🐗</div>
-      <div class="step-text">1 vil → <b>lure boar #2</b> to TC</div>
+      <div class="step-body">
+        <div class="step-action">Send one villager to lure the second boar.</div>
+        <div class="step-why">Same as before — click the boar, run back to your Town Center.</div>
+      </div>
     </div>
+
     <div class="step-row">
       <div class="step-pop">16–20</div><div class="step-icon">🌿</div>
-      <div class="step-text">5 vils → <b>mill → berries</b></div>
+      <div class="step-body">
+        <div class="step-action">Send villagers 16 to 20 to build a Mill near berries, then gather berries.</div>
+        <div class="step-why">Berries are slow but steady food. They help while you build farms later.</div>
+      </div>
     </div>
+
     <div class="step-row key-stone">
       <div class="step-pop">21</div><div class="step-icon">🪨</div>
-      <div class="step-text">1 vil → mine <b>25 stone</b> → drop <b>Donjon</b> next to gold (cover a 2nd resource if possible) → build <b>Barracks</b> → begin <b>quick-walling</b></div>
-      <div class="step-tag tag-stone">Key vil</div>
+      <div class="step-body">
+        <div class="step-action">Villager 21 does three things in order:</div>
+        <div class="step-action" style="margin-top:6px;">1. Mine <b>25 stone</b> from a stone pile.</div>
+        <div class="step-action">2. Build a <b>Donjon</b> next to your gold.</div>
+        <div class="step-action">3. Build a <b>Barracks</b>.</div>
+        <div class="step-action">4. Start <b>quick-walling</b> your base.</div>
+        <div class="step-bonus" style="margin-top:6px;">You already have 100 stone. You only need 25 more. The Donjon costs 125 stone total.</div>
+        <div class="step-why">The Donjon shoots arrows at enemies automatically. It protects your gold. Try to place it so it also covers a second resource nearby — like your wood or berries.</div>
+        <div class="step-enc">Your walls build 50% faster than other civs. Walling is quick for you. Do not panic about it.</div>
+      </div>
+      <div class="step-tag tag-sic">Key vil</div>
     </div>
-    <div class="step-row key-sic">
-      <div class="step-pop">—</div><div class="step-icon">🏰</div>
-      <div class="step-text"><b>Donjon placement:</b> default next to gold. Try to cover a 2nd resource in the same fire arc — gold + wood, gold + berries, or wood + berries. <span class="sic-bonus">Fortifications build +50% faster</span> — walls around the Donjon go up quickly.</div>
-      <div class="step-tag tag-sic">Placement</div>
+
+    <div class="step-row key">
+      <div class="step-pop">—</div><div class="step-icon">⬆️</div>
+      <div class="step-body">
+        <div class="step-action">Research <b>Loom</b>. Then click <b>Feudal Age</b>.</div>
+        <div class="step-why">Loom makes your villagers harder to kill. Always research it before advancing.</div>
+        <div class="step-action" style="margin-top:4px;">Keep making villagers while you wait.</div>
+      </div>
+      <div class="step-tag tag-key">Target: ~10:30</div>
     </div>
-    <div class="step-row">
-      <div class="step-pop">—</div><div class="step-icon">🔒</div>
-      <div class="step-text">Research <b>Loom</b> → <b>click Feudal Age</b>. Queue vils during age-up.</div>
-    </div>
+
     <div class="step-row">
       <div class="step-pop">—</div><div class="step-icon">🧱</div>
-      <div class="step-text">Take 1–2 vils from wood → <b>quick-wall TC</b>. Gradually pull vils from sheep/boar as hunt runs out.</div>
+      <div class="step-body">
+        <div class="step-action">Take 1 or 2 villagers from wood. Use them to wall your Town Center with palisades.</div>
+        <div class="step-why">Walls stop enemies getting to your villagers. You do not need to wall perfectly. Even a rough wall slows them down.</div>
+        <div class="step-enc">You are not weak. You are building strength. Keep going.</div>
+      </div>
     </div>
+
   </div>
 </div>
 
@@ -258,149 +307,308 @@ body{background:#0d0f14;color:#e8e4d8;font-family:'Rajdhani',sans-serif;width:10
 
 <!-- FEUDAL -->
 <div class="phase-header feudal-phase">
-  <div class="phase-label">Feudal Age — Boom to Castle</div>
-  <div class="phase-time">~10:30 → Castle Age</div>
+  <div class="phase-label">Feudal Age — Build Up</div>
+  <div class="phase-time">~10:30 → ~18:00</div>
 </div>
 <div class="phase-content">
 
-  <!-- ECO REBALANCE -->
-  <div class="rebalance-box">
-    <div class="rebalance-header">Rebalance eco on Feudal arrival</div>
-    <div class="rebalance-rows">
-      <div class="rebalance-cell"><div class="rebalance-label">Wood</div><div class="rebalance-val rv-wood">4</div></div>
-      <div class="rebalance-cell"><div class="rebalance-label">Gold</div><div class="rebalance-val rv-gold">3</div></div>
-      <div class="rebalance-cell"><div class="rebalance-label">Farms</div><div class="rebalance-val rv-farm">4</div></div>
-      <div class="rebalance-cell"><div class="rebalance-label">Berries</div><div class="rebalance-val rv-berries">5</div></div>
-      <div class="rebalance-cell"><div class="rebalance-label">Walls</div><div class="rebalance-val" style="color:#888;">rest</div></div>
-    </div>
+  <div class="eco-bar">
+    <div class="eco-label">Move vils to</div>
+    <div class="eco-chip eco-wood"><div class="eco-dot"></div>4 on Wood</div>
+    <div class="eco-chip eco-gold"><div class="eco-dot"></div>3 on Gold</div>
+    <div class="eco-chip eco-food"><div class="eco-dot"></div>4 on Farms</div>
+    <div class="eco-chip eco-food" style="background:rgba(122,184,80,0.12);color:#7ab850;border-color:rgba(122,184,80,0.2);"><div class="eco-dot" style="background:#7ab850;"></div>5 on Berries</div>
   </div>
 
   <div class="step-grid">
-    <div class="step-row">
-      <div class="step-pop">22–28</div><div class="step-icon">🌾</div>
-      <div class="step-text">New vils → <b>farms</b>. Research <b class="green-t">Double-Bit Axe</b> then <b class="green-t">Horse Collar</b>.</div>
-    </div>
-    <div class="step-row key-sic">
+
+    <div class="step-row key-enc">
       <div class="step-pop">—</div><div class="step-icon">🌾</div>
-      <div class="step-text">Research <b class="sic-bonus">Horse Collar</b> — Sicilian farm upgrades give <b class="sic-bonus">+125% additional food</b>, making this worth far more than any other civ. Never skip or delay it.</div>
-      <div class="step-tag tag-sic">+125% food</div>
+      <div class="step-body">
+        <div class="step-action">Send vils 22 to 28 to build Farms near your Town Center.</div>
+        <div class="step-bonus">Your farms give far more food than other civs. Every farm you build is worth extra. Build as many as you can.</div>
+        <div class="step-enc">More farms = more food = more soldiers. This is how you get strong.</div>
+      </div>
     </div>
+
+    <div class="step-row key">
+      <div class="step-pop">—</div><div class="step-icon">🌲</div>
+      <div class="step-body">
+        <div class="step-action">At your Lumber Camp, research <b>Double-Bit Axe</b>.</div>
+        <div class="step-why">Your villagers chop wood 20% faster. It costs 100 food and 50 wood.</div>
+      </div>
+    </div>
+
+    <div class="step-row key">
+      <div class="step-pop">—</div><div class="step-icon">🌾</div>
+      <div class="step-body">
+        <div class="step-action">At your Mill, research <b>Horse Collar</b>.</div>
+        <div class="step-bonus">This is free — it costs nothing for Sicilians. Research it immediately.</div>
+        <div class="step-why">Your farms now give even more food. Never skip this.</div>
+      </div>
+      <div class="step-tag tag-sic">Free!</div>
+    </div>
+
     <div class="step-row">
       <div class="step-pop">—</div><div class="step-icon">🧱</div>
-      <div class="step-text">Take walling vils back to eco once base is secure</div>
+      <div class="step-body">
+        <div class="step-action">Bring walling villagers back to eco once your base feels safe.</div>
+        <div class="step-why">Villagers gathering resources are more useful than villagers standing by walls.</div>
+      </div>
     </div>
-    <div class="step-row">
+
+    <div class="step-row key">
       <div class="step-pop">—</div><div class="step-icon">🔨</div>
-      <div class="step-text">Build <b>Blacksmith (150W)</b> → when finished build <b>Market (175W)</b> → when finished build <b>2 houses</b></div>
+      <div class="step-body">
+        <div class="step-action">Build a <b>Blacksmith</b>. It costs <b>150 wood</b>.</div>
+        <div class="step-why">You need the Blacksmith before you can build a Market. You also use it later for upgrades.</div>
+        <div class="step-action" style="margin-top:6px;">When the Blacksmith is done, build a <b>Market</b>. It costs <b>175 wood</b>.</div>
+        <div class="step-why">The Market lets you click Castle Age. You need it.</div>
+        <div class="step-action" style="margin-top:6px;">When the Market is done, build <b>2 more houses</b>.</div>
+      </div>
     </div>
-    <div class="step-row key-wood">
-      <div class="step-pop">—</div><div class="step-icon">🌲</div>
-      <div class="step-text">Blacksmith + Market = <b class="wood-t">325W</b> in buildings. Don't cut wood vils to ramp gold — wood income must cover this plus ongoing farms.</div>
-      <div class="step-tag" style="background:rgba(192,120,64,0.2);color:#c07840;border:1px solid rgba(192,120,64,0.4);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:2px 7px;border-radius:2px;white-space:nowrap;align-self:center;margin-left:auto;">Wood sink</div>
-    </div>
+
     <div class="step-row">
       <div class="step-pop">29–33</div><div class="step-icon">⛏️</div>
-      <div class="step-text">New vils → <b>gold</b> (ramp to 6–8 total). Research <b class="green-t">Wheelbarrow</b>.</div>
+      <div class="step-body">
+        <div class="step-action">Send vils 29 to 33 to mine <b>gold</b>.</div>
+        <div class="step-why">Gold pays for knights and Serjeants in Castle Age. Start banking it now.</div>
+      </div>
     </div>
+
+    <div class="step-row">
+      <div class="step-pop">—</div><div class="step-icon">🛒</div>
+      <div class="step-body">
+        <div class="step-action">Research <b>Wheelbarrow</b> at your Town Center.</div>
+        <div class="step-why">Your villagers carry more and move faster. It costs 175 food and 50 wood.</div>
+      </div>
+    </div>
+
     <div class="step-row key">
       <div class="step-pop">—</div><div class="step-icon">⬆️</div>
-      <div class="step-text">Click <b class="highlight">Castle Age</b></div>
-      <div class="step-tag tag-key">Target ~18–20 min</div>
+      <div class="step-body">
+        <div class="step-action">Click <b>Castle Age</b>.</div>
+        <div class="step-enc">You have been building quietly. Now it is time to attack. Attacking stops your opponent from getting even stronger. The sooner you push, the better.</div>
+      </div>
+      <div class="step-tag tag-key">Target: ~18–20 min</div>
     </div>
+
   </div>
 </div>
 
 <div class="phase-sep"></div>
 
-<!-- CASTLE AGE -->
+<!-- CASTLE AGE UPGRADES -->
 <div class="phase-header castle-phase">
-  <div class="phase-label">Castle Age — Knights → Serjeants + Siege</div>
-  <div class="phase-time">~18–20 min</div>
+  <div class="phase-label">Castle Age — Upgrades to Get</div>
+  <div class="phase-time">Do these in order</div>
+</div>
+<div class="phase-content">
+  <div class="upgrade-list">
+
+    <div class="upgrade-item">
+      <div class="upgrade-order">1</div>
+      <div class="upgrade-body">
+        <div class="upgrade-name">Scale Barding Armor <span class="upgrade-cost">150 food</span></div>
+        <div class="upgrade-effect">At your <b>Blacksmith</b>. Your knights and cavalry get +1 armour on all sides.</div>
+      </div>
+    </div>
+
+    <div class="upgrade-item">
+      <div class="upgrade-order">2</div>
+      <div class="upgrade-body">
+        <div class="upgrade-name">Chain Barding Armor <span class="upgrade-cost">250 food · 150 gold</span></div>
+        <div class="upgrade-effect">At your <b>Blacksmith</b>. Another +1 armour for your knights.</div>
+      </div>
+    </div>
+
+    <div class="upgrade-item">
+      <div class="upgrade-order">3</div>
+      <div class="upgrade-body">
+        <div class="upgrade-name">Hauberk <span class="upgrade-cost">Research at your Castle</span></div>
+        <div class="upgrade-effect">Your knights get <b>+1 melee armour and +2 pierce armour</b>.</div>
+        <div class="upgrade-sic">This is a Sicilian unique technology. Only you can get it. It makes your knights extremely hard to kill. Combined with your −40% bonus damage bonus, your knights are much tougher than they look.</div>
+      </div>
+    </div>
+
+    <div class="upgrade-item">
+      <div class="upgrade-order">4</div>
+      <div class="upgrade-body">
+        <div class="upgrade-name">Heavy Plow <span class="upgrade-cost">Free for Sicilians</span></div>
+        <div class="upgrade-effect">At your <b>Mill</b>. Your farms give even more food.</div>
+        <div class="upgrade-sic">This is free. Research it immediately. Your farm bonus makes this worth far more than normal.</div>
+      </div>
+    </div>
+
+    <div class="upgrade-item">
+      <div class="upgrade-order">5</div>
+      <div class="upgrade-body">
+        <div class="upgrade-name">Forging <span class="upgrade-cost">150 food</span></div>
+        <div class="upgrade-effect">At your <b>Blacksmith</b>. Your knights and Serjeants hit harder.</div>
+      </div>
+    </div>
+
+    <div class="upgrade-item">
+      <div class="upgrade-order">6</div>
+      <div class="upgrade-body">
+        <div class="upgrade-name">Iron Casting <span class="upgrade-cost">220 food · 120 gold</span></div>
+        <div class="upgrade-effect">At your <b>Blacksmith</b>. Even more attack for your knights and Serjeants.</div>
+      </div>
+    </div>
+
+  </div>
 </div>
 
-<div style="padding:16px 36px 0;">
+<div class="phase-sep"></div>
 
-  <!-- SHARED -->
-  <div class="castle-shared">
-    <div class="castle-shared-title">On Castle arrival — always</div>
-    <div class="step-grid">
-      <div class="step-row key-sic">
-        <div class="step-pop">—</div><div class="step-icon">🏇</div>
-        <div class="step-text">Build <b>Stable → knights immediately</b>. Pressure before opponent stabilises. <span class="sic-bonus">Sicilian soldiers take −40% bonus damage</span> — your knights survive things that would kill other civs' knights.</div>
-        <div class="step-tag tag-sic">Priority #1</div>
-      </div>
-      <div class="step-row">
-        <div class="step-pop">—</div><div class="step-icon">🛡️</div>
-        <div class="step-text">Blacksmith → <b>Scale Barding Armor</b> then <b>Chain Barding Armor</b>. Armor first — survivability over attack.</div>
-      </div>
-      <div class="step-row key-sic">
-        <div class="step-pop">—</div><div class="step-icon">⚔️</div>
-        <div class="step-text">Research <b class="sic-bonus">Hauberk</b> (unique tech) ASAP — Knights +1 melee/+2 pierce armor on top of blacksmith upgrades. Combined with −40% bonus damage, your knights become extremely durable.</div>
-        <div class="step-tag tag-sic">Key tech</div>
-      </div>
-      <div class="step-row key-sic">
-        <div class="step-pop">—</div><div class="step-icon">🌾</div>
-        <div class="step-text">Research <b class="sic-bonus">Heavy Plow</b> — Sicilian farm upgrades give <b class="sic-bonus">+125% additional food</b>. Sustains 2-stable knight + Serjeant production simultaneously.</div>
-        <div class="step-tag tag-sic">+125% food</div>
-      </div>
+<!-- BRANCH -->
+<div class="section-gap"></div>
+<div class="branch-header">
+  <div class="branch-title">Castle Age — Which army should I build?</div>
+  <div class="branch-subtitle">Look at what your opponent is doing. Then choose below.</div>
+</div>
+<div class="branch-cols">
+  <div class="branch-col branch-col-a">
+    <div class="branch-col-header">🏇 Path A — Knight Rush</div>
+    <div class="branch-when"><b>When to choose this:</b> You are feeling confident. Your opponent seems weak or slow.</div>
+    <div class="branch-steps">
+      <div class="branch-step">Build a <b>Stable</b> immediately.</div>
+      <div class="branch-step">Make <b>Knights</b> straight away. Do not wait.</div>
+      <div class="branch-step">Send knights to attack their villagers.</div>
+      <div class="branch-step"><span class="sic-b">Research Hauberk</span> at your Castle. This makes your knights very tough.</div>
+      <div class="branch-step">When you have a Castle, also make <b>Serjeants</b>.</div>
+      <div class="branch-step">Add <b>Rams</b> from a Siege Workshop when pushing buildings.</div>
+      <div class="branch-step green-b">Keep attacking. Stopping lets them recover.</div>
     </div>
   </div>
-
-  <!-- CASTLE PATHS -->
-  <div class="castle-paths">
-    <div class="castle-path path-a">
-      <div class="path-header">
-        <div class="path-num">Phase 1 — Knights</div>
-        <div class="path-name">Immediate pressure</div>
-        <div class="path-tag">Before opponent stabilises</div>
-      </div>
-      <div class="path-content">
-        <div class="path-step"><div class="path-step-icon">🏇</div><div><b>1 stable initially.</b> Knights out fast — pressure while opponent is still transitioning.</div></div>
-        <div class="path-step"><div class="path-step-icon">🏇</div><div>Add <b>2nd stable</b> once 6–8 vils on gold sustain both queues.</div></div>
-        <div class="path-step"><div class="path-step-icon">⚠️</div><div>Watch for pikes. <span class="sic-b">−40% bonus damage</span> helps but spear-line still counters. Don't charge spear blobs.</div></div>
-        <div class="path-step"><div class="path-step-icon">🏰</div><div>Build a <b>Castle</b> when stone allows — enables Serjeant production and acts as a forward anchor.</div></div>
-      </div>
-    </div>
-    <div class="castle-path path-b">
-      <div class="path-header">
-        <div class="path-num">Phase 2 — Serjeants + Siege</div>
-        <div class="path-name">Transition when castle up</div>
-        <div class="path-tag">Durable frontline + push</div>
-      </div>
-      <div class="path-content">
-        <div class="path-step"><div class="path-step-icon">⚔️</div><div><b>Serjeants</b> from castle. They frontline for knights — absorb spears, build Donjons forward during pushes.</div></div>
-        <div class="path-step"><div class="path-step-icon">🏭</div><div><b>Siege Workshop → Rams (160W each)</b> when pushing a base. Rams force defensive response, protect Serjeants.</div></div>
-        <div class="path-step"><div class="path-step-icon">🐌</div><div>Serjeants can <b>build Donjons</b> during a push — drop one near enemy resources to deny eco mid-fight.</div></div>
-        <div class="path-step"><div class="path-step-icon">🏇</div><div>Knights continue in support — raid flanks, snipe siege, clean up retreating units.</div></div>
-      </div>
+  <div class="branch-col branch-col-b">
+    <div class="branch-col-header">⚔️ Path B — Serjeant + Donjon Rush</div>
+    <div class="branch-when"><b>When to choose this:</b> You feel safer playing defensively. Or your opponent is aggressive.</div>
+    <div class="branch-steps">
+      <div class="branch-step">Build a <b>Castle</b> as soon as you have 650 stone. (You already have 100 — mine 550 more.)</div>
+      <div class="branch-step">Make <b>Serjeants</b> from your Castle.</div>
+      <div class="branch-step">Send Serjeants forward. They can <b>build Donjons</b> near the enemy base.</div>
+      <div class="branch-step">A Donjon near their gold or wood will terrify them. <span class="sic-b">This is attacking — just slower and safer.</span></div>
+      <div class="branch-step">Add <b>Rams</b> once Serjeants are established forward.</div>
+      <div class="branch-step">Add <b>Knights</b> later when you have gold to spare.</div>
+      <div class="branch-step green-b">You are not turtling. You are creeping forward. That is good.</div>
     </div>
   </div>
-
-  <!-- DONJON USAGE -->
-  <div class="donjon-box">
-    <div class="donjon-title">Donjon usage — Dark Age through Castle Age</div>
-    <div class="donjon-grid">
-      <div class="donjon-item"><b>Dark Age:</b> drop next to gold, cover 2nd resource if possible. 25 stone from vil 21.</div>
-      <div class="donjon-item"><b>Fire coverage:</b> provides arrow fire on raiders — Donjons are significantly stronger than Watch Towers.</div>
-      <div class="donjon-item"><b>Garrison vils:</b> if raiders get through, garrison nearby vils inside the Donjon temporarily.</div>
-      <div class="donjon-item"><b>Forward push:</b> Serjeants can build Donjons in Castle Age — drop one near enemy eco during a push to extend pressure.</div>
-    </div>
-  </div>
-
 </div>
 
-<!-- ALWAYS -->
-<div class="always-block">
-  <div class="always-title">Always / Never</div>
-  <div class="always-grid">
-    <div class="always-item"><b>Horse Collar + Heavy Plow</b> — +125% food per upgrade, never skip</div>
-    <div class="always-item"><b>Hauberk</b> unique tech ASAP — transforms knight durability</div>
-    <div class="always-item"><b>Donjon next to gold</b> by default in Dark Age</div>
-    <div class="always-item"><b>Armor upgrades before attack</b> — Sicilian knights are about survival</div>
-    <div class="always-item"><b>Serjeants frontline for knights</b> — they absorb spear damage</div>
-    <div class="always-item"><b>Rams with escort</b> — never push buildings unprotected</div>
-    <div class="always-item never-item"><b>Don't charge spear blobs with knights</b> alone — use Serjeants first</div>
-    <div class="always-item never-item"><b>Don't cut wood vils</b> to ramp gold — 325W in Feudal buildings</div>
+<div class="section-gap"></div>
+
+<!-- COUNTER SECTION -->
+<div class="counter-section">
+  <div class="counter-header">
+    <div class="counter-title">What are they building? Here is what you do.</div>
+    <div class="counter-subtitle">Find what they have. Read what to build. It is that simple.</div>
+  </div>
+  <div class="counter-rows">
+
+    <div class="counter-row">
+      <div class="counter-threat">
+        <div class="counter-threat-label">They build</div>
+        <div class="counter-threat-name">🏹 Archers</div>
+      </div>
+      <div class="counter-answer">
+        <div class="counter-build">Build Knights.</div>
+        <div class="counter-why">Knights are fast. They close the gap before archers can run away. <b>Archers cannot win against knights in a straight fight.</b></div>
+        <div class="counter-bonus">Your knights take less bonus damage than normal. They will survive more arrows than you expect.</div>
+      </div>
+    </div>
+
+    <div class="counter-row">
+      <div class="counter-threat">
+        <div class="counter-threat-label">They build</div>
+        <div class="counter-threat-name">🏹 Crossbowmen</div>
+      </div>
+      <div class="counter-answer">
+        <div class="counter-build">Build Knights. Add Serjeants too.</div>
+        <div class="counter-why">Same as archers. Knights close fast. <b>Serjeants have high armour and tank the bolts.</b> Put Serjeants in front, knights behind.</div>
+        <div class="counter-bonus">Your soldiers take 40% less bonus damage. Crossbow bolts deal bonus damage — your units survive them better than others.</div>
+      </div>
+    </div>
+
+    <div class="counter-row">
+      <div class="counter-threat">
+        <div class="counter-threat-label">They build</div>
+        <div class="counter-threat-name">🗡️ Spearmen or Pikemen</div>
+      </div>
+      <div class="counter-answer">
+        <div class="counter-build">Build Serjeants. Add Rams.</div>
+        <div class="counter-why">Spears are designed to counter knights. <b>Do not send knights into a spear blob.</b> Serjeants are infantry — spears are less effective against them. Rams soak arrow fire and protect your Serjeants.</div>
+        <div class="counter-bonus">Your Serjeants take less bonus damage too. They are tougher than normal infantry.</div>
+      </div>
+    </div>
+
+    <div class="counter-row">
+      <div class="counter-threat">
+        <div class="counter-threat-label">They build</div>
+        <div class="counter-threat-name">🏇 Scouts or Knights</div>
+      </div>
+      <div class="counter-answer">
+        <div class="counter-build">Build Serjeants. Add Spearmen too.</div>
+        <div class="counter-why">Serjeants are tough and tank cavalry hits well. <b>Spearmen are cheap and specifically counter cavalry.</b> Use both together. Spears in front, Serjeants behind.</div>
+        <div class="counter-bonus">Remember — your soldiers take less bonus damage. Your Serjeants will survive cavalry hits better than you think.</div>
+      </div>
+    </div>
+
+    <div class="counter-row">
+      <div class="counter-threat">
+        <div class="counter-threat-label">They build</div>
+        <div class="counter-threat-name">⛪ Monks</div>
+      </div>
+      <div class="counter-answer">
+        <div class="counter-build">Build Knights. Keep them moving.</div>
+        <div class="counter-why">Monks convert units that stand still. <b>Keep your knights moving at all times.</b> A moving knight is very hard to convert. Send Light Cavalry to kill the monks directly — they are fast enough to catch them.</div>
+      </div>
+    </div>
+
+    <div class="counter-row">
+      <div class="counter-threat">
+        <div class="counter-threat-label">They build</div>
+        <div class="counter-threat-name">💥 Mangonels or Siege</div>
+      </div>
+      <div class="counter-answer">
+        <div class="counter-build">Rush with Knights immediately.</div>
+        <div class="counter-why"><b>Two knights kill a mangonel very quickly.</b> Do not let siege fire at your army. Close the distance fast and attack the siege directly. Mangonels cannot defend themselves up close.</div>
+      </div>
+    </div>
+
+    <div class="counter-row">
+      <div class="counter-threat">
+        <div class="counter-threat-label">They build</div>
+        <div class="counter-threat-name">🏰 Towers or Donjons</div>
+      </div>
+      <div class="counter-answer">
+        <div class="counter-build">Build Serjeants. Add Rams.</div>
+        <div class="counter-why">Rams absorb tower fire so your Serjeants stay alive. <b>Never attack a tower without Rams in front.</b> Move Rams up to the tower, let them soak the arrows, then let Serjeants finish it.</div>
+        <div class="counter-bonus">Your Serjeants take less bonus damage from tower arrows. They are more durable near towers than most units.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- PANIC BOX -->
+<div class="panic-box">
+  <div class="panic-header">
+    <div class="panic-title">🛡️ If you are not sure what to do — do this</div>
+  </div>
+  <div class="panic-content">
+    <div class="panic-text">Build a <b>Donjon</b> near whichever resource feels most at risk.<br><br>Your <span class="sic-b">walls and towers build 50% faster</span> than other civs. A Donjon goes up quickly and will immediately start helping.<br><br>Then take a breath. Look at what your opponent is building. Find it in the table above. Build the answer.<br><br><b>You are not losing just because they are attacking. Sicilians are one of the hardest civs to kill. Keep building. Keep producing. You are tougher than you think.</b></div>
+  </div>
+</div>
+
+<!-- FIRST CRUSADE -->
+<div class="crusade-box">
+  <div class="crusade-title">👑 First Crusade — Save this for Imperial Age</div>
+  <div class="crusade-body">
+    First Crusade is your most powerful technology. <b>It spawns 5 free Serjeants at each of your Town Centers.</b><br><br>
+    If you have 3 Town Centers, that is <b>15 free Serjeants instantly.</b><br><br>
+    <b>When to use it:</b> When you are ready for a big final push. Or when your army has been destroyed and you need soldiers immediately.<br><br>
+    <span class="sic-b">Do not forget you have this.</span> It can turn a bad situation into a winning one very quickly.
   </div>
 </div>
 
@@ -408,40 +616,40 @@ body{background:#0d0f14;color:#e8e4d8;font-family:'Rajdhani',sans-serif;width:10
 <div class="res-table">
   <div class="res-table-header">
     <div class="res-col-head">Resource</div>
-    <div class="res-col-head">Vils</div>
-    <div class="res-col-head">Target</div>
-    <div class="res-col-head">Notes</div>
+    <div class="res-col-head">How many vils</div>
+    <div class="res-col-head">Why</div>
+    <div class="res-col-head">Note</div>
   </div>
   <div class="res-row" style="background:rgba(139,200,100,0.04);">
     <div class="res-cell res-label"><span class="f">● Food</span></div>
     <div class="res-cell"><span class="f">10–14</span></div>
-    <div class="res-cell"><span class="f">12+ farms</span></div>
-    <div class="res-cell note">+125% farm bonus — farms go further</div>
+    <div class="res-cell note">Pays for knights, Serjeants, farms</div>
+    <div class="res-cell note">Your farms give extra — fewer vils needed</div>
   </div>
-  <div class="res-row" style="background:rgba(192,120,64,0.07);">
+  <div class="res-row" style="background:rgba(192,120,64,0.04);">
     <div class="res-cell res-label"><span class="w">● Wood</span></div>
     <div class="res-cell"><span class="w">6–8</span></div>
-    <div class="res-cell"><span class="w">Steady income</span></div>
-    <div class="res-cell note">325W Feudal buildings + farms + rams</div>
+    <div class="res-cell note">Pays for buildings and farms</div>
+    <div class="res-cell note">Don't cut wood to get more gold</div>
   </div>
   <div class="res-row" style="background:rgba(197,160,40,0.07);">
     <div class="res-cell res-label"><span class="g">● Gold</span></div>
     <div class="res-cell"><span class="g">6–8</span></div>
-    <div class="res-cell"><span class="g">Ramp in late Feudal</span></div>
-    <div class="res-cell note">75G per knight — keep mines draining</div>
+    <div class="res-cell note">Pays for knights and Serjeants</div>
+    <div class="res-cell note">75 gold per knight — keep mining</div>
   </div>
   <div class="res-row" style="background:rgba(144,144,184,0.06);">
     <div class="res-cell res-label"><span class="s">● Stone</span></div>
-    <div class="res-cell"><span class="s">1 (brief)</span></div>
-    <div class="res-cell"><span class="s">25S then castle later</span></div>
-    <div class="res-cell note">Vil 21 mines briefly; bank more for castle</div>
+    <div class="res-cell"><span class="s">1–3</span></div>
+    <div class="res-cell note">For Donjons and Castle</div>
+    <div class="res-cell note">You start with 100 — only mine when needed</div>
   </div>
 </div>
 
 <!-- FOOTER -->
 <div class="footer">
-  <div class="footer-left">Farraway · Sicilians · 1v1 Arabia</div>
-  <div class="footer-right">Survivalist Fundamentals · FC Knights → Serjeants + Siege · v2026</div>
+  <div class="footer-left">Sicilians · Survivalist Fundamentals · Arabia</div>
+  <div class="footer-right">FC Knights → Serjeants + Siege · v2026</div>
 </div>
 
 </div>
