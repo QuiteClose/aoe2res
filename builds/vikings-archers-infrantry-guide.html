@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vikings — Archer Rush → Berserks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0d0f14;color:#e8e4d8;font-family:'Rajdhani',sans-serif;width:100%;max-width:900px;margin:0 auto;padding-bottom:40px;}
+.guide{display:flex;flex-direction:column;width:100%;}
+
+.header{background:#111318;border-bottom:2px solid #5a8fc5;padding:22px 36px 18px;display:flex;align-items:center;justify-content:space-between;}
+.civ-icon{width:46px;height:46px;background:#5a8fc5;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:22px;color:#0d0f14;font-weight:700;font-family:'Share Tech Mono',monospace;letter-spacing:-2px;}
+.civ-badge{display:flex;align-items:center;gap:14px;}
+.civ-label{font-size:11px;color:#5a8fc5;letter-spacing:3px;text-transform:uppercase;font-weight:600;}
+.civ-name{font-size:26px;font-weight:700;color:#f0ead8;letter-spacing:1px;line-height:1;}
+.build-title{text-align:right;}
+.build-label{font-size:11px;color:#888;letter-spacing:3px;text-transform:uppercase;font-weight:600;margin-bottom:3px;}
+.build-name{font-size:19px;font-weight:700;color:#7ab8e8;letter-spacing:1px;}
+.build-sub{font-size:12px;color:#888;letter-spacing:1px;margin-top:2px;}
+
+.bonus-bar{display:flex;gap:6px;padding:12px 36px;background:#0a0c10;border-bottom:1px solid rgba(255,255,255,0.05);flex-wrap:wrap;align-items:center;}
+.bonus-label{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#5a8fc5;min-width:60px;}
+.bonus-chip{font-size:12px;font-weight:600;color:#b0c8e8;padding:3px 10px;border-radius:3px;background:rgba(90,143,197,0.1);border:1px solid rgba(90,143,197,0.2);}
+.weakness-chip{font-size:12px;font-weight:600;color:#e89080;padding:3px 10px;border-radius:3px;background:rgba(232,144,128,0.08);border:1px solid rgba(232,144,128,0.2);}
+.free-chip{font-size:12px;font-weight:600;color:#7ab850;padding:3px 10px;border-radius:3px;background:rgba(122,184,80,0.1);border:1px solid rgba(122,184,80,0.25);}
+
+.phase-header{display:flex;align-items:center;padding:0 36px;height:40px;border-left:3px solid;}
+.phase-label{font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;}
+.phase-time{margin-left:auto;font-family:'Share Tech Mono',monospace;font-size:12px;opacity:.65;}
+.phase-content{padding:16px 36px 20px;}
+
+.dark-phase{border-color:#c5a028 !important;background:rgba(197,160,40,0.07);}
+.dark-phase .phase-label{color:#c5a028;}
+.feudal-phase{border-color:#7ab850 !important;background:rgba(122,184,80,0.07);}
+.feudal-phase .phase-label{color:#7ab850;}
+.castle-phase{border-color:#5a9fdf !important;background:rgba(90,159,223,0.07);}
+.castle-phase .phase-label{color:#5a9fdf;}
+
+.step-grid{display:flex;flex-direction:column;gap:5px;}
+.step-row{display:flex;align-items:flex-start;gap:10px;padding:7px 10px;border-radius:4px;border:1px solid rgba(255,255,255,0.04);background:rgba(255,255,255,0.02);}
+.step-row.key{border-color:rgba(197,160,40,0.35);background:rgba(197,160,40,0.06);}
+.step-row.key-blue{border-color:rgba(90,143,197,0.4);background:rgba(90,143,197,0.06);}
+.step-row.key-green{border-color:rgba(122,184,80,0.35);background:rgba(122,184,80,0.06);}
+.step-row.key-red{border-color:rgba(232,120,90,0.35);background:rgba(232,120,90,0.06);}
+.step-pop{font-family:'Share Tech Mono',monospace;font-size:11px;color:#888;min-width:30px;padding-top:2px;letter-spacing:1px;}
+.step-icon{font-size:15px;min-width:20px;text-align:center;padding-top:1px;}
+.step-text{flex:1;font-size:14px;font-weight:500;color:#d8d2c4;line-height:1.4;}
+.step-text b{color:#f0ead8;font-weight:700;}
+.highlight{color:#c5a028;font-weight:700;}
+.viking-bonus{color:#7ab8e8;font-weight:700;}
+.green-t{color:#7ab850;font-weight:700;}
+.red-t{color:#e8785a;font-weight:700;}
+.step-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:2px 7px;border-radius:2px;white-space:nowrap;align-self:center;margin-left:auto;}
+.tag-viking{background:rgba(90,143,197,0.2);color:#7ab8e8;border:1px solid rgba(90,143,197,0.4);}
+.tag-key{background:rgba(197,160,40,0.2);color:#c5a028;border:1px solid rgba(197,160,40,0.4);}
+.tag-free{background:rgba(122,184,80,0.15);color:#7ab850;border:1px solid rgba(122,184,80,0.35);}
+.tag-warn{background:rgba(232,120,90,0.15);color:#e8785a;border:1px solid rgba(232,120,90,0.35);}
+.tag-stone{background:rgba(144,144,184,0.15);color:#9090c8;border:1px solid rgba(144,144,184,0.3);}
+
+.eco-bar{display:flex;gap:7px;padding:10px 14px;background:#0a0c10;border:1px solid rgba(255,255,255,0.08);border-radius:4px;margin-bottom:14px;align-items:center;flex-wrap:wrap;}
+.eco-label{font-size:11px;letter-spacing:2px;color:#666;text-transform:uppercase;font-weight:600;min-width:52px;}
+.eco-chip{display:flex;align-items:center;gap:5px;padding:3px 9px 3px 6px;border-radius:3px;font-family:'Share Tech Mono',monospace;font-size:12px;font-weight:700;}
+.eco-dot{width:6px;height:6px;border-radius:50%;}
+.eco-food{background:rgba(120,180,80,0.15);color:#8bc864;border:1px solid rgba(120,180,80,0.25);}
+.eco-wood{background:rgba(139,90,43,0.2);color:#c07840;border:1px solid rgba(139,90,43,0.3);}
+.eco-gold{background:rgba(197,160,40,0.15);color:#c5a028;border:1px solid rgba(197,160,40,0.25);}
+.eco-stone{background:rgba(144,144,184,0.15);color:#9090c8;border:1px solid rgba(144,144,184,0.3);}
+.eco-pop{background:rgba(150,120,200,0.15);color:#a890d8;border:1px solid rgba(150,120,200,0.25);}
+.eco-food .eco-dot{background:#8bc864;}
+.eco-wood .eco-dot{background:#c07840;}
+.eco-gold .eco-dot{background:#c5a028;}
+.eco-stone .eco-dot{background:#9090c8;}
+.eco-pop .eco-dot{background:#a890d8;}
+
+.phase-sep{height:2px;background:rgba(255,255,255,0.04);}
+
+.branch-box{margin:20px 36px;border:2px dashed rgba(122,184,80,0.45);border-radius:6px;padding:18px 20px;background:rgba(122,184,80,0.03);position:relative;}
+.branch-label{position:absolute;top:-10px;left:18px;background:#0d0f14;padding:0 8px;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#7ab850;}
+.branch-question{font-size:16px;font-weight:700;color:#f0ead8;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.08);}
+.branch-options{display:flex;gap:10px;}
+.branch-option{flex:1;border-radius:4px;padding:12px 14px;border:1px solid;}
+.branch-option.green{border-color:rgba(122,184,80,0.4);background:rgba(122,184,80,0.06);}
+.branch-option.red{border-color:rgba(232,120,90,0.4);background:rgba(232,120,90,0.06);}
+.branch-title{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+.branch-option.green .branch-title{color:#7ab850;}
+.branch-option.red .branch-title{color:#e8785a;}
+.branch-items{list-style:none;display:flex;flex-direction:column;gap:4px;}
+.branch-items li{font-size:13px;color:#b0a898;padding-left:12px;position:relative;line-height:1.35;}
+.branch-items li::before{content:'›';position:absolute;left:0;color:#666;}
+.branch-items li b{color:#d8d2c4;font-weight:700;}
+
+.castle-cols{display:flex;gap:12px;margin:16px 36px 0;}
+.castle-col{flex:1;border-radius:6px;overflow:hidden;}
+.col-header{padding:12px 16px 10px;border-bottom:1px solid rgba(255,255,255,0.06);}
+.col-num{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:3px;}
+.col-name{font-size:15px;font-weight:700;line-height:1.2;}
+.col-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:2px 7px;border-radius:2px;margin-top:5px;}
+.col-content{padding:12px 16px;}
+.col-green{background:rgba(122,184,80,0.04);border:1px solid rgba(122,184,80,0.18);}
+.col-green .col-num{color:#7ab850;}
+.col-green .col-name{color:#a8d880;}
+.col-green .col-tag{background:rgba(122,184,80,0.15);color:#7ab850;border:1px solid rgba(122,184,80,0.35);}
+.col-red{background:rgba(232,120,90,0.04);border:1px solid rgba(232,120,90,0.18);}
+.col-red .col-num{color:#e8785a;}
+.col-red .col-name{color:#f0b498;}
+.col-red .col-tag{background:rgba(232,120,90,0.15);color:#e8785a;border:1px solid rgba(232,120,90,0.35);}
+
+.col-step{display:flex;align-items:flex-start;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:13px;color:#b0a898;line-height:1.35;}
+.col-step:last-child{border-bottom:none;}
+.col-step-icon{min-width:15px;text-align:center;font-size:13px;}
+.col-step b{color:#d8d2c4;font-weight:700;}
+.viking-b{color:#7ab8e8;font-weight:700;}
+.green-b{color:#7ab850;font-weight:700;}
+.warn-b{color:#e8785a;font-weight:700;}
+
+.shared-block{margin:16px 36px 0;border:1px solid rgba(90,143,197,0.25);border-radius:6px;padding:14px 18px;background:rgba(90,143,197,0.04);}
+.shared-title{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#7ab8e8;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.shared-title::after{content:'';flex:1;height:1px;background:rgba(90,143,197,0.2);}
+.shared-step{display:flex;align-items:flex-start;gap:9px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:13px;color:#b0a898;line-height:1.35;}
+.shared-step:last-child{border-bottom:none;}
+.shared-step-icon{min-width:16px;text-align:center;}
+
+.weakness-box{margin:16px 36px 0;border:1px solid rgba(232,120,90,0.3);border-radius:6px;padding:14px 18px;background:rgba(232,120,90,0.04);}
+.weakness-title{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#e8785a;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.weakness-title::after{content:'';flex:1;height:1px;background:rgba(232,120,90,0.2);}
+.weakness-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px 20px;}
+.weakness-item{display:flex;align-items:flex-start;gap:7px;font-size:13px;color:#b0a898;line-height:1.35;padding:2px 0;}
+.weakness-item::before{content:'⚠';color:#e8785a;font-weight:700;min-width:14px;}
+.weakness-item b{color:#e8a080;}
+
+.always-block{margin:16px 36px 0;border:1px solid rgba(122,184,80,0.3);border-radius:6px;padding:16px 20px;background:rgba(122,184,80,0.04);}
+.always-title{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#7ab850;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.always-title::after{content:'';flex:1;height:1px;background:rgba(122,184,80,0.2);}
+.always-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px 20px;}
+.always-item{display:flex;align-items:flex-start;gap:7px;font-size:13px;color:#b0a898;line-height:1.35;padding:2px 0;}
+.always-item::before{content:'✓';color:#7ab850;font-weight:700;min-width:12px;}
+.always-item b{color:#d8d2c4;}
+.never-item::before{content:'✗';color:#e85a5a;}
+.never-item b{color:#e8a0a0;}
+
+.res-table{margin:16px 36px 0;border:1px solid rgba(255,255,255,0.07);border-radius:6px;overflow:hidden;}
+.res-table-header{display:grid;grid-template-columns:1fr 1fr 1.5fr 2fr;background:#111318;border-bottom:1px solid rgba(255,255,255,0.08);}
+.res-col-head{padding:8px 14px;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#666;}
+.res-row{display:grid;grid-template-columns:1fr 1fr 1.5fr 2fr;border-bottom:1px solid rgba(255,255,255,0.04);}
+.res-row:last-child{border-bottom:none;}
+.res-cell{padding:9px 14px;font-size:13px;color:#b0a898;font-family:'Share Tech Mono',monospace;}
+.res-cell.res-label{color:#888;font-family:'Rajdhani',sans-serif;font-weight:600;}
+.res-cell.note{font-family:'Rajdhani',sans-serif;font-size:12px;color:#666;}
+.f{color:#8bc864;}.w{color:#c07840;}.g{color:#c5a028;}.s{color:#9090b8;}
+
+.footer{padding:16px 36px;border-top:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;align-items:center;background:#0a0c10;margin-top:20px;}
+.footer-left{font-size:11px;color:#444;letter-spacing:2px;text-transform:uppercase;}
+.footer-right{font-size:11px;color:#444;font-family:'Share Tech Mono',monospace;}
+</style>
+</head>
+<body>
+<div class="guide">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="civ-badge">
+    <div class="civ-icon">V</div>
+    <div>
+      <div class="civ-label">Civilisation</div>
+      <div class="civ-name">Vikings</div>
+    </div>
+  </div>
+  <div class="build-title">
+    <div class="build-label">Build Order</div>
+    <div class="build-name">Archer Rush → Berserks</div>
+    <div class="build-sub">19 pop · Arabia · 1v1</div>
+  </div>
+</div>
+
+<!-- BONUS BANNER -->
+<div class="bonus-bar">
+  <div class="bonus-label">Bonuses</div>
+  <div class="free-chip">⚡ Wheelbarrow instant on Feudal</div>
+  <div class="free-chip">⚡ Hand Cart instant on Castle</div>
+  <div class="bonus-chip">⚔️ Infantry +20% HP (Feudal+)</div>
+  <div class="bonus-chip">🏹 Full archer line (Arbalester)</div>
+  <div class="bonus-chip">🪓 Berserk regenerates HP</div>
+  <div class="weakness-chip">✗ No Bloodlines / Husbandry</div>
+  <div class="weakness-chip">✗ No Paladin / Siege Onager</div>
+</div>
+
+<!-- DARK AGE -->
+<div class="phase-sep"></div>
+<div class="phase-header dark-phase">
+  <div class="phase-label">Dark Age</div>
+  <div class="phase-time">0:00 → ~9:15</div>
+</div>
+<div class="phase-content">
+  <div class="step-grid">
+    <div class="step-row">
+      <div class="step-pop">1–6</div><div class="step-icon">🐑</div>
+      <div class="step-text">All 6 starting vils → <b>sheep</b></div>
+    </div>
+    <div class="step-row">
+      <div class="step-pop">7–9</div><div class="step-icon">🌲</div>
+      <div class="step-text">3 vils → <b>wood</b> (build lumber camp)</div>
+    </div>
+    <div class="step-row">
+      <div class="step-pop">10</div><div class="step-icon">🐗</div>
+      <div class="step-text">1 vil → <b>lure boar #1</b> to TC</div>
+    </div>
+    <div class="step-row">
+      <div class="step-pop">11</div><div class="step-icon">🌿</div>
+      <div class="step-text">1 vil → <b>house</b> then <b>mill</b> → berries</div>
+    </div>
+    <div class="step-row key-stone">
+      <div class="step-pop">12–14</div><div class="step-icon">🫐</div>
+      <div class="step-text">3 vils → <b>berries</b>. These 3 will transition to <b class="stone-t">stone</b> when berries run out in Castle Age — passive stone income without any active decision.</div>
+      <div class="step-tag tag-stone">→ Stone later</div>
+    </div>
+    <div class="step-row">
+      <div class="step-pop">15</div><div class="step-icon">🐗</div>
+      <div class="step-text">1 vil → <b>lure boar #2</b> to TC</div>
+    </div>
+    <div class="step-row">
+      <div class="step-pop">16–19</div><div class="step-icon">🌲</div>
+      <div class="step-text">4 vils → <b>wood</b></div>
+    </div>
+    <div class="step-row key">
+      <div class="step-pop">—</div><div class="step-icon">⬆️</div>
+      <div class="step-text">Research <b class="highlight">Loom</b> → <b class="highlight">click Feudal Age</b></div>
+      <div class="step-tag tag-key">Target 9:15</div>
+    </div>
+  </div>
+</div>
+
+<div class="phase-sep"></div>
+
+<!-- FEUDAL -->
+<div class="phase-header feudal-phase">
+  <div class="phase-label">Feudal Age — Archer Rush</div>
+  <div class="phase-time">~9:15 → ~14:00</div>
+</div>
+<div class="phase-content">
+  <div class="eco-bar">
+    <div class="eco-label">Eco at Feudal</div>
+    <div class="eco-chip eco-food"><div class="eco-dot"></div>8F</div>
+    <div class="eco-chip eco-wood"><div class="eco-dot"></div>5W</div>
+    <div class="eco-chip eco-gold"><div class="eco-dot"></div>0G</div>
+    <div class="eco-chip eco-pop"><div class="eco-dot"></div>19 pop</div>
+  </div>
+  <div class="step-grid">
+    <div class="step-row key-green">
+      <div class="step-pop">Feudal</div><div class="step-icon">⚡</div>
+      <div class="step-text"><b class="viking-bonus">Wheelbarrow researches instantly</b> on Feudal arrival — free, automatic, zero cost. Vils now carry more and move faster with no action required.</div>
+      <div class="step-tag tag-free">Auto</div>
+    </div>
+    <div class="step-row">
+      <div class="step-pop">—</div><div class="step-icon">🌲</div>
+      <div class="step-text">Move <b>4–5 vils</b> from food → <b>wood</b> (target 9–10 total on wood)</div>
+    </div>
+    <div class="step-row">
+      <div class="step-pop">—</div><div class="step-icon">⛏️</div>
+      <div class="step-text">Move <b>2 vils</b> from food → <b>gold</b> mining camp (2 total)</div>
+    </div>
+    <div class="step-row key-blue">
+      <div class="step-pop">~60%</div><div class="step-icon">🏠</div>
+      <div class="step-text">Barracks builder vil → <b>Archery Range #1</b> immediately on Feudal arrival. Start archers — never let the range sit idle.</div>
+      <div class="step-tag tag-viking">Priority #1</div>
+    </div>
+    <div class="step-row">
+      <div class="step-pop">—</div><div class="step-icon">🔨</div>
+      <div class="step-text">Build <b>Blacksmith</b> → research <b class="green-t">Double-Bit Axe</b> then <b class="green-t">Fletching</b></div>
+    </div>
+    <div class="step-row">
+      <div class="step-pop">—</div><div class="step-icon">⛏️</div>
+      <div class="step-text">Ramp to <b>4 total on gold</b> as new vils arrive</div>
+    </div>
+    <div class="step-row">
+      <div class="step-pop">—</div><div class="step-icon">🌾</div>
+      <div class="step-text">New vils → straggler trees → seed <b>farms</b> as food runs low</div>
+    </div>
+    <div class="step-row key-blue">
+      <div class="step-pop">6–8 🏹</div><div class="step-icon">🏹</div>
+      <div class="step-text">Send archers to opponent's base. Target unprotected vils — avoid TC fire. Keep scouting.</div>
+      <div class="step-tag tag-viking">Attack</div>
+    </div>
+    <div class="step-row">
+      <div class="step-pop">—</div><div class="step-icon">🗡️</div>
+      <div class="step-text">Make <b>1–3 spearmen</b> if enemy scouts are threatening your vils</div>
+    </div>
+    <div class="step-row">
+      <div class="step-pop">—</div><div class="step-icon">🧱</div>
+      <div class="step-text">Use builder vils to <b>wall your base</b> with palisades + houses while pushing</div>
+    </div>
+    <div class="step-row key-blue">
+      <div class="step-pop">7–8G</div><div class="step-icon">🏹</div>
+      <div class="step-text">Only add <b>Archery Range #2</b> once you have <b>7–8 vils on gold</b> and can keep both queues full. An idle range is wasted wood.</div>
+      <div class="step-tag tag-viking">2nd range</div>
+    </div>
+  </div>
+</div>
+
+<div class="phase-sep"></div>
+
+<!-- BRANCH -->
+<div class="branch-box">
+  <div class="branch-label">Branch Decision — ~Feudal +4 min</div>
+  <div class="branch-question">Are your archers dealing damage or getting shut out?</div>
+  <div class="branch-options">
+    <div class="branch-option green">
+      <div class="branch-title">🟢 Rush Going Well → Forward Castle</div>
+      <ul class="branch-items">
+        <li>Archers killing vils, map control established</li>
+        <li>Walls incomplete, opponent reacting</li>
+        <li style="margin-top:4px;color:#7ab850;"><b>→ Sustain archer pressure</b></li>
+        <li><b>→ Forward castle near their base</b></li>
+        <li><b>→ Berserks raid from castle</b></li>
+        <li><b>→ Rams on buildings to close out</b></li>
+      </ul>
+    </div>
+    <div class="branch-option red">
+      <div class="branch-title">🔴 Rush Shut Out → Defensive Castle</div>
+      <ul class="branch-items">
+        <li>Walled + skirm mass countering archers</li>
+        <li>Archers not paying off — pull back</li>
+        <li style="margin-top:4px;color:#e8785a;"><b>→ Archers defend at home</b></li>
+        <li><b>→ Fast Castle at your base</b></li>
+        <li><b>→ Berserks counter-raid</b></li>
+        <li><b>→ Crossbows hold the front</b></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="phase-sep" style="margin-top:4px;"></div>
+
+<!-- PIVOT -->
+<div class="phase-header feudal-phase">
+  <div class="phase-label">Feudal → Castle Pivot</div>
+  <div class="phase-time">~13:00 → ~18:00</div>
+</div>
+<div class="phase-content">
+  <div class="step-grid">
+    <div class="step-row">
+      <div class="step-pop">—</div><div class="step-icon">⛏️</div>
+      <div class="step-text">Maintain <b>7–8 vils on gold</b>. Crossbows + Berserks are gold-hungry.</div>
+    </div>
+    <div class="step-row">
+      <div class="step-pop">—</div><div class="step-icon">🌾</div>
+      <div class="step-text">Push to <b>12+ farms</b> for sustained Castle Age production</div>
+    </div>
+    <div class="step-row">
+      <div class="step-pop">—</div><div class="step-icon">🏪</div>
+      <div class="step-text">Build <b>Market + 2nd feudal building</b> to unlock Castle click. Sell stone if short on gold.</div>
+    </div>
+    <div class="step-row key">
+      <div class="step-pop">—</div><div class="step-icon">⬆️</div>
+      <div class="step-text">Click <b class="highlight">Castle Age</b></div>
+      <div class="step-tag tag-key">Target 18–20 min</div>
+    </div>
+  </div>
+</div>
+
+<div class="phase-sep"></div>
+
+<!-- CASTLE HEADER -->
+<div class="phase-header castle-phase">
+  <div class="phase-label">Castle Age — Both Paths</div>
+  <div class="phase-time">~18–20 min</div>
+</div>
+
+<!-- SHARED CASTLE STEPS -->
+<div class="shared-block">
+  <div class="shared-title">Always on Castle arrival</div>
+  <div class="shared-step"><div class="shared-step-icon">⚡</div><div><b class="viking-bonus">Hand Cart researches instantly</b> — free, automatic on Castle Age arrival. No action needed.</div></div>
+  <div class="shared-step"><div class="shared-step-icon">🏹</div><div>Upgrade archers → <b>Crossbowman</b>. Research <b>Bodkin Arrow</b> immediately — priority before anything else.</div></div>
+  <div class="shared-step"><div class="shared-step-icon">🪨</div><div><b>Berry vils transition to stone</b> when berries run out (~early Castle Age). 3 vils passively banking stone toward 650 for a castle.</div></div>
+  <div class="shared-step"><div class="shared-step-icon">📐</div><div>Research <b>Ballistics</b> at University when you can — major accuracy boost for crossbows at range.</div></div>
+</div>
+
+<!-- CASTLE PATHS -->
+<div class="castle-cols">
+  <div class="castle-col col-green">
+    <div class="col-header">
+      <div class="col-num">🟢 Rush Went Well</div>
+      <div class="col-name">Forward Castle + Berserks</div>
+      <div class="col-tag">Map control → close out</div>
+    </div>
+    <div class="col-content">
+      <div class="col-step"><div class="col-step-icon">🏰</div><div>Drop <b>castle near their base</b> once you have 650 stone. TC fire covers Berserks on raids.</div></div>
+      <div class="col-step"><div class="col-step-icon">🪓</div><div><b>Berserks</b> from castle — raid their eco. Pull back wounded ones, let them regen, re-engage.</div></div>
+      <div class="col-step"><div class="col-step-icon">🪵</div><div><b>Rams</b> on buildings once Berserks have softened the base. Don't ram into a defended base unescorted.</div></div>
+      <div class="col-step"><div class="col-step-icon">🏹</div><div>Crossbows hold map outside castle range, support Berserks vs massed units.</div></div>
+      <div class="col-step"><div class="col-step-icon">⚔️</div><div>Add <b>Long Swordsmen</b> if opponent masses infantry to counter Berserks. <span class="viking-b">+20% HP</span> makes them durable.</div></div>
+    </div>
+  </div>
+  <div class="castle-col col-red">
+    <div class="col-header">
+      <div class="col-num">🔴 Rush Shut Out</div>
+      <div class="col-name">Defensive Castle + Counter-raid</div>
+      <div class="col-tag">Stabilise → break out</div>
+    </div>
+    <div class="col-content">
+      <div class="col-step"><div class="col-step-icon">🏰</div><div>Drop <b>castle at home or mid-map</b>. Secures your eco and provides a Berserk production base.</div></div>
+      <div class="col-step"><div class="col-step-icon">🪓</div><div><b>Berserks counter-raid</b> — send small groups to harass their eco while crossbows defend your front.</div></div>
+      <div class="col-step"><div class="col-step-icon">🏹</div><div>Crossbows + spears hold the front. Don't over-commit — let the castle do defensive work.</div></div>
+      <div class="col-step"><div class="col-step-icon">🪵</div><div><b>Rams</b> when breaking out of a siege or pushing back. Don't ram without Berserk escort.</div></div>
+      <div class="col-step"><div class="col-step-icon">📈</div><div>Stabilise eco first — once Berserks are raiding freely, opponent is forced to react and you regain map control.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- WEAKNESS -->
+<div class="weakness-box">
+  <div class="weakness-title">Known weaknesses — plan around these</div>
+  <div class="weakness-grid">
+    <div class="weakness-item"><b>No Bloodlines / Husbandry</b> — never fight a cavalry war. Avoid the stable entirely.</div>
+    <div class="weakness-item"><b>Skirms hard-counter archers</b> — if they mass skirms early, abort to Fast Castle rather than out-archering them.</div>
+    <div class="weakness-item"><b>No Siege Onager</b> — can't answer massed skirms with siege late. Use Berserks + Chieftains instead.</div>
+    <div class="weakness-item"><b>Mangonels destroy blobs</b> — spread archers manually at all times. Never let them bunch.</div>
+  </div>
+</div>
+
+<!-- ALWAYS -->
+<div class="always-block">
+  <div class="always-title">Always / Never</div>
+  <div class="always-grid">
+    <div class="always-item"><b>Wheelbarrow + Hand Cart</b> are instant and free — they just happen</div>
+    <div class="always-item"><b>Bodkin Arrow</b> first thing in Castle Age</div>
+    <div class="always-item"><b>Spread archers</b> — never blob vs mangonel threat</div>
+    <div class="always-item"><b>Micro Berserks out</b> when low HP — regen then re-engage</div>
+    <div class="always-item"><b>2nd range only</b> when 7–8 vils on gold support it</div>
+    <div class="always-item"><b>Rams need escort</b> — Berserks or LSwords, never alone</div>
+    <div class="always-item never-item"><b>Don't invest in cavalry</b> — no Bloodlines or Husbandry</div>
+    <div class="always-item never-item"><b>Don't blob archers</b> — one mangonel volley ends your army</div>
+  </div>
+</div>
+
+<!-- RES TABLE -->
+<div class="res-table">
+  <div class="res-table-header">
+    <div class="res-col-head">Resource</div>
+    <div class="res-col-head">Vils</div>
+    <div class="res-col-head">Target</div>
+    <div class="res-col-head">Notes</div>
+  </div>
+  <div class="res-row" style="background:rgba(139,200,100,0.04);">
+    <div class="res-cell res-label"><span class="f">● Food</span></div>
+    <div class="res-cell"><span class="f">10–12</span></div>
+    <div class="res-cell"><span class="f">12+ farms</span></div>
+    <div class="res-cell note">Crossbows + Berserks both cost food</div>
+  </div>
+  <div class="res-row" style="background:rgba(192,120,64,0.04);">
+    <div class="res-cell res-label"><span class="w">● Wood</span></div>
+    <div class="res-cell"><span class="w">8–10</span></div>
+    <div class="res-cell"><span class="w">Steady income</span></div>
+    <div class="res-cell note">Archers + farms + ranges all cost wood</div>
+  </div>
+  <div class="res-row" style="background:rgba(197,160,40,0.04);">
+    <div class="res-cell res-label"><span class="g">● Gold</span></div>
+    <div class="res-cell"><span class="g">7–8</span></div>
+    <div class="res-cell"><span class="g">Keep mines draining</span></div>
+    <div class="res-cell note">Crossbows are gold-hungry</div>
+  </div>
+  <div class="res-row" style="background:rgba(144,144,184,0.04);">
+    <div class="res-cell res-label"><span class="s">● Stone</span></div>
+    <div class="res-cell"><span class="s">3 (berries)</span></div>
+    <div class="res-cell"><span class="s">650 for castle</span></div>
+    <div class="res-cell note">Berry vils transition naturally</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-left">Farraway · Vikings · 1v1 Arabia</div>
+  <div class="footer-right">19 pop · Archer Rush → Berserks · v2026</div>
+</div>
+
+</div>
+</body>
+</html>
